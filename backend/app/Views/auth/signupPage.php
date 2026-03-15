@@ -104,7 +104,7 @@
                             <div class="space-y-5">
                                 <!-- FIRST NAME -->
                                 <div>
-                                    <label class="block mb-2 font-semibold text-[#514d4d]">First Name</label>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">Firsts Name</label>
                                     <input type="text" name="first_name" required
                                         value="<?= esc($old['first_name'] ?? '') ?>"
                                         placeholder="Enter your first name"
