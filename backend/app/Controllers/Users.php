@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Controllers\BaseController;
+
+class Users extends BaseController
+{
+    public function index()
+    {
+        return view('user/landingPage');
+    }
+
+    public function login()
+    {
+        return view('user/loginPage');
+    }
+
+    public function signup()
+    {
+        return view('user/signupPage');
+    }
+
+    // ❌ REMOVE shop() here — Stock controller now handles shop
+
+    public function moodboard()
+    {
+        return view('user/moodboardPage');
+    }
+
+    public function roadmap()
+    {
+        return view('user/roadmapPage');
+    }
+}
