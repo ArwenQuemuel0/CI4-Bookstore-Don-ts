@@ -1,0 +1,166 @@
+<?php
+$session = session();
+
+// Redirect to login if user is not logged in
+if (!$session->has('user')) {
+    return redirect()->to('/loginPage');
+}
+
+// Get user's first name
+$userFirstName = $session->get('user')['first_name'] ?? 'Reader';
+
+// Count items in cart
+$cartCount = $session->has('cart') ? count($session->get('cart')) : 0;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fennekin Folios – Shop</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/bookstore_icon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: url('/assets/background.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .overlay {
+            background: linear-gradient(rgba(44, 41, 41, 0.6), rgba(225, 90, 55, 0.4));
+        }
+
+        .header-title {
+            font-family: "Righteous", sans-serif;
+        }
+
+        button:hover,
+        .card-hover:hover,
+        a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(225, 90, 55, 0.3);
+        }
+
+        /* Cart badge */
+        .cart-badge {
+            top: -0.5rem;
+            right: -0.5rem;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <div class="flex flex-col min-h-screen overlay">
+
+        <!-- Header -->
+        <?= view('components/header.php', ['showCart' => true, 'cartCount' => $cartCount]) ?>
+
+        <main class="flex-grow">
+
+            <!-- Greeting -->
+            <section class="py-16 text-center">
+                <h2 class="drop-shadow-lg font-bold text-white text-3xl md:text-4xl header-title">
+                    Hello, <?= esc($userFirstName) ?>!
+                </h2>
+                <p class="mt-2 text-white/90 text-lg md:text-xl">
+                    Welcome back! Browse and purchase your favorite Japanese folktales and supernatural stories.
+                </p>
+            </section>
+
+            <!-- Products from Database -->
+            <section class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
+                <div class="mx-auto px-4 max-w-6xl">
+
+                    <h3 class="mb-12 font-bold text-[#e15a37] text-4xl text-center header-title">
+                        Featured Japanese Books
+                    </h3>
+
+                    <div class="gap-8 grid md:grid-cols-3">
+
+                        <?php if (!empty($products)): ?>
+                            <?php foreach ($products as $product): ?>
+                                <?= view('components/cards/shop_cards', [
+                                    'title'       => $product->name,
+                                    'description' => $product->description,
+                                    'price'       => $product->price,
+                                    'image'       => $product->image,
+                                    'showCartBtn' => true
+                                ]) ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="col-span-3 text-gray-600 text-center">
+                                No books available at the moment.
+                            </p>
+                        <?php endif; ?>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CTA Full Width -->
+            <section class="bg-white/90 backdrop-blur-sm py-32 w-full text-[#514d4d] text-center">
+                <?= view('components/cta', [
+                    'heading' => 'Discover More Japanese Folktales',
+                    'sub' => 'Explore a curated selection of mystical and supernatural stories that capture the imagination.',
+                    'primary' => [
+                        'label' => 'Shop Now',
+                        'href'  => '/shop'
+                    ]
+                ]) ?>
+            </section>
+
+            <!-- User Request Form -->
+            <div class="bg-white shadow-md mx-auto mt-16 mb-16 p-8 border border-[#FCE77C] rounded-xl max-w-3xl">
+                <h3 class="mb-4 font-bold text-[#E15A37] text-2xl header-title">Have a Book Request?</h3>
+                <p class="mb-4 text-gray-700">If there's a book you'd like us to add, you can submit your request below.</p>
+
+                <!-- SUCCESS MESSAGE -->
+                <?php if (session()->getFlashdata('success')): ?>
+                    <p class="mb-4 p-3 bg-green-100 text-green-700 border border-green-300 rounded-lg">
+                        <?= session()->getFlashdata('success') ?>
+                    </p>
+                <?php endif; ?>
+
+                <!-- ERROR MESSAGE -->
+                <?php if (session()->getFlashdata('error')): ?>
+                    <p class="mb-4 p-3 bg-red-100 text-red-700 border border-red-300 rounded-lg">
+                        <?= session()->getFlashdata('error') ?>
+                    </p>
+                <?php endif; ?>
+
+                <form action="/submitRequest" method="post">
+                    <?= csrf_field() ?>
+
+                    <!-- Automatically include logged-in user's full name -->
+                    <input type="hidden" name="requester_name"
+                        value="<?= esc($session->get('user')['first_name'] . ' ' . $session->get('user')['last_name']) ?>">
+
+                    <textarea name="requested_data" placeholder="Enter the book or item you want added..."
+                        class="mb-4 p-3 border border-[#E15A37] rounded-lg w-full" rows="3" required></textarea>
+
+                    <textarea name="message" placeholder="Optional message..."
+                        class="mb-4 p-3 border border-[#E15A37] rounded-lg w-full" rows="3"></textarea>
+
+                    <button type="submit"
+                        class="bg-[#E15A37] hover:bg-[#ED865A] px-6 py-3 rounded-lg font-semibold text-white">
+                        Submit Request
+                    </button>
+                </form>
+
+            </div>
+
+
+            <!-- Footer -->
+            <?= view('components/footer') ?>
+
+        </main>
+    </div>
+</body>
+
+</html>
