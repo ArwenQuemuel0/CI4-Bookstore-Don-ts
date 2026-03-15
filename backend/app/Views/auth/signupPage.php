@@ -95,151 +95,160 @@
                     </div>
 
                     <!-- SIGNUP FORM -->
-                    <form class="space-y-5" action="/signupPage" method="post" enctype="multipart/form-data" novalidate>
+                    <form action="/signupPage" method="post" enctype="multipart/form-data" novalidate>
                         <?= csrf_field() ?>
 
-                        <!-- FIRST NAME -->
-                        <div>
-                            <label class="block mb-2 font-semibold text-[#514d4d]">First Name</label>
-                            <input type="text" name="first_name" required
-                                value="<?= esc($old['first_name'] ?? '') ?>"
-                                placeholder="Enter your first name"
-                                class="px-4 py-4 border-2 <?= isset($errors['first_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
-                            <?php if (!empty($errors['first_name'])): ?>
-                                <p class="mt-2 text-red-600 text-sm"><?= esc($errors['first_name']) ?></p>
-                            <?php endif; ?>
-                        </div>
-
-                        <!-- MIDDLE NAME -->
-                        <div>
-                            <label class="block mb-2 font-semibold text-[#514d4d]">Middle Name (Optional)</label>
-                            <input type="text" name="middle_name"
-                                value="<?= esc($old['middle_name'] ?? '') ?>"
-                                placeholder="Enter your middle name"
-                                class="px-4 py-4 border-2 <?= isset($errors['middle_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
-                            <?php if (!empty($errors['middle_name'])): ?>
-                                <p class="mt-2 text-red-600 text-sm"><?= esc($errors['middle_name']) ?></p>
-                            <?php endif; ?>
-                        </div>
-
-                        <!-- LAST NAME -->
-                        <div>
-                            <label class="block mb-2 font-semibold text-[#514d4d]">Last Name</label>
-                            <input type="text" name="last_name" required
-                                value="<?= esc($old['last_name'] ?? '') ?>"
-                                placeholder="Enter your last name"
-                                class="px-4 py-4 border-2 <?= isset($errors['last_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
-                            <?php if (!empty($errors['last_name'])): ?>
-                                <p class="mt-2 text-red-600 text-sm"><?= esc($errors['last_name']) ?></p>
-                            <?php endif; ?>
-                        </div>
-
-                        <!-- PROFILE PICTURE -->
-                        <div>
-                            <label class="block mb-2 font-semibold text-[#514d4d]">Profile picture</label>
-                            <input type="file" name="avatar" accept="image/*" required
-                                class="w-full text-gray-900 border-2 <?= isset($errors['avatar']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl p-3 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
-                            <?php if (!empty($errors['avatar'])): ?>
-                                <p class="mt-2 text-red-600 text-sm"><?= esc($errors['avatar']) ?></p>
-                            <?php endif; ?>
-                        </div>
-
-                        <!-- EMAIL -->
-                        <div>
-                            <label class="block mb-2 font-semibold text-[#514d4d]">Email Address</label>
-                            <input type="email" name="email" required
-                                value="<?= esc($old['email'] ?? '') ?>"
-                                placeholder="Enter your email"
-                                class="px-4 py-4 border-2 <?= isset($errors['email']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
-                            <?php if (!empty($errors['email'])): ?>
-                                <p class="mt-2 text-red-600 text-sm"><?= esc($errors['email']) ?></p>
-                            <?php endif; ?>
-                        </div>
-
-                        <!-- PASSWORD -->
-                        <div>
-                            <label class="block mb-2 font-semibold text-[#514d4d]">Password</label>
-
-                            <div class="relative">
-                                <input type="password" id="password" name="password" required
-                                    placeholder="Create a password"
-                                    class="px-4 py-4 border-2 <?= isset($errors['password']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
-
-                                <button type="button" aria-label="Toggle password visibility"
-                                    id="togglePasswordBtn"
-                                    class="top-4 right-4 absolute p-1">
-                                    <svg id="icon-eye" xmlns="http://www.w3.org/2000/svg"
-                                        class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
-                                            d="M2.5 12s4-7 9.5-7 9.5 7 9.5 7-4 7-9.5 7S2.5 12 2.5 12z" />
-                                        <circle cx="12" cy="12" r="3" />
-                                    </svg>
-
-                                    <svg id="icon-eye-off" xmlns="http://www.w3.org/2000/svg"
-                                        class="hidden w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
-                                            d="M3 3l18 18" />
-                                    </svg>
-                                </button>
-                            </div>
-
-                            <?php if (!empty($errors['password'])): ?>
-                                <p class="mt-2 text-red-600 text-sm"><?= esc($errors['password']) ?></p>
-                            <?php endif; ?>
-
-                            <!-- Password Requirements -->
-                            <div id="password-requirements" class="space-y-1 mt-2 text-[#514d4d] text-sm">
-                                <p id="req-length" class="text-red-500">• At least 8 characters</p>
-                                <p id="req-number" class="text-red-500">• Contains a number</p>
-                                <p id="req-upper" class="text-red-500">• Contains an uppercase letter</p>
-                                <p id="req-lower" class="text-red-500">• Contains a lowercase letter</p>
-                                <p id="req-special" class="text-red-500">• Contains a special character</p>
-                            </div>
-
-                            <!-- Strength Meter -->
-                            <div class="mt-3">
-                                <div class="bg-gray-200 rounded-full w-full h-2 overflow-hidden">
-                                    <div id="strengthBar" class="bg-red-500 w-0 h-full transition-all"></div>
+                        <!-- Form Fields in Two Columns -->
+                        <div class="gap-5 grid grid-cols-1 md:grid-cols-2">
+                            <!-- Left Column -->
+                            <div class="space-y-5">
+                                <!-- FIRST NAME -->
+                                <div>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">First Name</label>
+                                    <input type="text" name="first_name" required
+                                        value="<?= esc($old['first_name'] ?? '') ?>"
+                                        placeholder="Enter your first name"
+                                        class="px-4 py-4 border-2 <?= isset($errors['first_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+                                    <?php if (!empty($errors['first_name'])): ?>
+                                        <p class="mt-2 text-red-600 text-sm"><?= esc($errors['first_name']) ?></p>
+                                    <?php endif; ?>
                                 </div>
-                                <p id="strengthText" class="mt-1 text-[#514d4d] text-xs">Strength: —</p>
+
+                                <!-- MIDDLE NAME -->
+                                <div>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">Middle Name (Optional)</label>
+                                    <input type="text" name="middle_name"
+                                        value="<?= esc($old['middle_name'] ?? '') ?>"
+                                        placeholder="Enter your middle name"
+                                        class="px-4 py-4 border-2 <?= isset($errors['middle_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+                                    <?php if (!empty($errors['middle_name'])): ?>
+                                        <p class="mt-2 text-red-600 text-sm"><?= esc($errors['middle_name']) ?></p>
+                                    <?php endif; ?>
+                                </div>
+
+                                <!-- LAST NAME -->
+                                <div>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">Last Name</label>
+                                    <input type="text" name="last_name" required
+                                        value="<?= esc($old['last_name'] ?? '') ?>"
+                                        placeholder="Enter your last name"
+                                        class="px-4 py-4 border-2 <?= isset($errors['last_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+                                    <?php if (!empty($errors['last_name'])): ?>
+                                        <p class="mt-2 text-red-600 text-sm"><?= esc($errors['last_name']) ?></p>
+                                    <?php endif; ?>
+                                </div>
+
+                                <!-- PROFILE PICTURE -->
+                                <div>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">Profile picture</label>
+                                    <input type="file" name="avatar" accept="image/*" required
+                                        class="w-full text-gray-900 border-2 <?= isset($errors['avatar']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl p-3 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+                                    <?php if (!empty($errors['avatar'])): ?>
+                                        <p class="mt-2 text-red-600 text-sm"><?= esc($errors['avatar']) ?></p>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- CONFIRM PASSWORD -->
-                        <div>
-                            <label class="block mb-2 font-semibold text-[#514d4d]">Confirm Password</label>
+                            <!-- Right Column -->
+                            <div class="space-y-5">
+                                <!-- EMAIL -->
+                                <div>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">Email Address</label>
+                                    <input type="email" name="email" required
+                                        value="<?= esc($old['email'] ?? '') ?>"
+                                        placeholder="Enter your email"
+                                        class="px-4 py-4 border-2 <?= isset($errors['email']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+                                    <?php if (!empty($errors['email'])): ?>
+                                        <p class="mt-2 text-red-600 text-sm"><?= esc($errors['email']) ?></p>
+                                    <?php endif; ?>
+                                </div>
 
-                            <div class="relative">
-                                <input type="password" id="password_confirm" name="password_confirm" required
-                                    placeholder="Confirm your password"
-                                    class="px-4 py-4 border-2 <?= isset($errors['password_confirm']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+                                <!-- PASSWORD -->
+                                <div>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">Password</label>
 
-                                <button type="button" id="toggleConfirmBtn" class="top-4 right-4 absolute p-1">
-                                    <svg id="icon-eye2" xmlns="http://www.w3.org/2000/svg"
-                                        class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
-                                            d="M2.5 12s4-7 9.5-7 9.5 7 9.5 7-4 7-9.5 7S2.5 12 2.5 12z" />
-                                        <circle cx="12" cy="12" r="3" />
-                                    </svg>
+                                    <div class="relative">
+                                        <input type="password" id="password" name="password" required
+                                            placeholder="Create a password"
+                                            class="px-4 py-4 border-2 <?= isset($errors['password']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
 
-                                    <svg id="icon-eye-off2" xmlns="http://www.w3.org/2000/svg"
-                                        class="hidden w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
-                                            d="M3 3l18 18" />
-                                    </svg>
-                                </button>
+                                        <button type="button" aria-label="Toggle password visibility"
+                                            id="togglePasswordBtn"
+                                            class="top-4 right-4 absolute p-1">
+                                            <svg id="icon-eye" xmlns="http://www.w3.org/2000/svg"
+                                                class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+                                                    d="M2.5 12s4-7 9.5-7 9.5 7 9.5 7-4 7-9.5 7S2.5 12 2.5 12z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+
+                                            <svg id="icon-eye-off" xmlns="http://www.w3.org/2000/svg"
+                                                class="hidden w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+                                                    d="M3 3l18 18" />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <?php if (!empty($errors['password'])): ?>
+                                        <p class="mt-2 text-red-600 text-sm"><?= esc($errors['password']) ?></p>
+                                    <?php endif; ?>
+
+                                    <!-- Password Requirements -->
+                                    <div id="password-requirements" class="space-y-1 mt-2 text-[#514d4d] text-sm">
+                                        <p id="req-length" class="text-red-500">• At least 8 characters</p>
+                                        <p id="req-number" class="text-red-500">• Contains a number</p>
+                                        <p id="req-upper" class="text-red-500">• Contains an uppercase letter</p>
+                                        <p id="req-lower" class="text-red-500">• Contains a lowercase letter</p>
+                                        <p id="req-special" class="text-red-500">• Contains a special character</p>
+                                    </div>
+
+                                    <!-- Strength Meter -->
+                                    <div class="mt-3">
+                                        <div class="bg-gray-200 rounded-full w-full h-2 overflow-hidden">
+                                            <div id="strengthBar" class="bg-red-500 w-0 h-full transition-all"></div>
+                                        </div>
+                                        <p id="strengthText" class="mt-1 text-[#514d4d] text-xs">Strength: —</p>
+                                    </div>
+                                </div>
+
+                                <!-- CONFIRM PASSWORD -->
+                                <div>
+                                    <label class="block mb-2 font-semibold text-[#514d4d]">Confirm Password</label>
+
+                                    <div class="relative">
+                                        <input type="password" id="password_confirm" name="password_confirm" required
+                                            placeholder="Confirm your password"
+                                            class="px-4 py-4 border-2 <?= isset($errors['password_confirm']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+
+                                        <button type="button" id="toggleConfirmBtn" class="top-4 right-4 absolute p-1">
+                                            <svg id="icon-eye2" xmlns="http://www.w3.org/2000/svg"
+                                                class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+                                                    d="M2.5 12s4-7 9.5-7 9.5 7 9.5 7-4 7-9.5 7S2.5 12 2.5 12z" />
+                                                <circle cx="12" cy="12" r="3" />
+                                            </svg>
+
+                                            <svg id="icon-eye-off2" xmlns="http://www.w3.org/2000/svg"
+                                                class="hidden w-5 h-5 text-gray-500" fill="none" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
+                                                    d="M3 3l18 18" />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <?php if (!empty($errors['password_confirm'])): ?>
+                                        <p class="mt-2 text-red-600 text-sm"><?= esc($errors['password_confirm']) ?></p>
+                                    <?php endif; ?>
+
+                                    <p id="matchText" class="mt-2 text-red-500 text-sm">• Passwords must match</p>
+                                </div>
                             </div>
-
-                            <?php if (!empty($errors['password_confirm'])): ?>
-                                <p class="mt-2 text-red-600 text-sm"><?= esc($errors['password_confirm']) ?></p>
-                            <?php endif; ?>
-
-                            <p id="matchText" class="mt-2 text-red-500 text-sm">• Passwords must match</p>
                         </div>
 
                         <!-- SUBMIT BUTTON -->
                         <button type="submit"
-                            class="bg-[#e15a37] hover:bg-[#ed865a] py-4 rounded-full w-full font-semibold text-white text-lg">
+                            class="bg-[#e15a37] hover:bg-[#ed865a] mt-5 py-4 rounded-full w-full font-semibold text-white text-lg">
                             Create Account
                         </button>
                     </form>

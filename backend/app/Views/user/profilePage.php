@@ -36,6 +36,57 @@ $success = $session->getFlashdata('success') ?? null;
         .header-title {
             font-family: "Righteous", sans-serif;
         }
+
+        /* Adding many random colors and font sizes for bad UX */
+        .random-color1 {
+            color: #FF0000;
+            font-size: 8px;
+        }
+
+        .random-color2 {
+            color: #00FF00;
+            font-size: 12px;
+        }
+
+        .random-color3 {
+            color: #0000FF;
+            font-size: 16px;
+        }
+
+        .random-color4 {
+            color: #FFFF00;
+            font-size: 20px;
+        }
+
+        .random-color5 {
+            color: #FF00FF;
+            font-size: 24px;
+        }
+
+        .random-color6 {
+            color: #00FFFF;
+            font-size: 28px;
+        }
+
+        .random-color7 {
+            color: #800080;
+            font-size: 32px;
+        }
+
+        .random-color8 {
+            color: #FFA500;
+            font-size: 36px;
+        }
+
+        .random-color9 {
+            color: #A52A2A;
+            font-size: 40px;
+        }
+
+        .random-color10 {
+            color: #808080;
+            font-size: 44px;
+        }
     </style>
 </head>
 
@@ -45,31 +96,25 @@ $success = $session->getFlashdata('success') ?? null;
         <?= view('components/header', ['brandTitle' => 'Profile']) ?>
 
         <main class="flex-grow px-4 py-16">
-            <div class="mx-auto max-w-3xl bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl">
-                <h1 class="text-3xl font-bold text-[#E15A37] header-title mb-4">Your Profile</h1>
-
-                <?php if ($success): ?>
-                    <div class="mb-6 rounded-lg bg-green-100 p-4 text-green-700">
-                        <?= esc($success) ?>
-                    </div>
-                <?php endif; ?>
+            <div class="bg-white/90 shadow-xl backdrop-blur-sm mx-auto p-10 rounded-3xl max-w-3xl">
+                <h1 class="mb-4 font-bold text-[#E15A37] text-3xl header-title random-color1">Your Profile</h1>
 
                 <?php if (!empty($errors)): ?>
-                    <div class="mb-6 rounded-lg bg-red-100 p-4 text-red-700">
-                        <ul class="list-disc pl-5">
+                    <div class="bg-red-100 mb-6 p-4 rounded-lg text-red-700">
+                        <ul class="pl-5 list-disc">
                             <?php foreach ($errors as $error): ?>
-                                <li><?= esc($error) ?></li>
+                                <li class="random-color2"><?= esc($error) ?></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>
                 <?php endif; ?>
 
-                <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex md:flex-row flex-col gap-8">
                     <div class="flex-shrink-0">
                         <?php if (!empty($user['avatar_url'])): ?>
-                            <img src="<?= esc($user['avatar_url']) ?>" alt="Avatar" class="w-40 h-40 rounded-full object-cover border-4 border-[#E15A37]">
+                            <img src="<?= esc($user['avatar_url']) ?>" alt="Avatar" class="border-[#E15A37] border-4 rounded-full w-40 h-40 object-cover">
                         <?php else: ?>
-                            <div class="w-40 h-40 rounded-full bg-[#FCE77C] flex items-center justify-center text-5xl font-bold text-[#514d4d]">
+                            <div class="flex justify-center items-center bg-[#FCE77C] rounded-full w-40 h-40 font-bold text-[#514d4d] text-5xl">
                                 <?= esc(substr($user['profile']['display_name'] ?? ($user['first_name'] ?? ''), 0, 1)) ?>
                             </div>
                         <?php endif; ?>
@@ -79,22 +124,44 @@ $success = $session->getFlashdata('success') ?? null;
                         <?= csrf_field() ?>
 
                         <div>
-                            <label class="block text-sm font-semibold text-[#514d4d] mb-2">Display Name</label>
+                            <label class="block mb-2 font-semibold text-[#514d4d] text-sm random-color3">Display Name (Required, but maybe not?)</label>
                             <input type="text" name="display_name" required
                                 value="<?= esc($user['profile']['display_name'] ?? ($user['first_name'] . ' ' . $user['last_name'])) ?>"
-                                class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-[#E15A37] focus:ring-[#fce77c]/60 focus:ring-4">
+                                class="px-4 py-3 border border-gray-300 focus:border-[#E15A37] rounded-xl focus:ring-[#fce77c]/60 focus:ring-4 w-full random-color4">
                         </div>
 
                         <div>
-                            <label class="block text-sm font-semibold text-[#514d4d] mb-2">Profile Photo</label>
+                            <label class="block mb-2 font-semibold text-[#514d4d] text-sm random-color5">Profile Photo (Upload something, anything)</label>
                             <input type="file" name="avatar" accept="image/*"
-                                class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-[#E15A37] focus:ring-[#fce77c]/60 focus:ring-4">
-                            <p class="mt-2 text-xs text-gray-600">Leave blank to keep current photo. Max 2MB.</p>
+                                class="px-4 py-3 border border-gray-300 focus:border-[#E15A37] rounded-xl focus:ring-[#fce77c]/60 focus:ring-4 w-full random-color6">
+                            <p class="mt-2 text-gray-600 text-xs random-color7">Leave blank to keep current photo. Max 2MB. Or don't, who cares.</p>
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 font-semibold text-[#514d4d] text-sm random-color8">Unnecessary Field 1</label>
+                            <input type="text" name="useless1" placeholder="Type anything here"
+                                class="px-4 py-3 border border-gray-300 focus:border-[#E15A37] rounded-xl focus:ring-[#fce77c]/60 focus:ring-4 w-full random-color9">
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 font-semibold text-[#514d4d] text-sm random-color10">Another Useless Field</label>
+                            <input type="email" name="useless2" placeholder="Email? Or not?"
+                                class="px-4 py-3 border border-gray-300 focus:border-[#E15A37] rounded-xl focus:ring-[#fce77c]/60 focus:ring-4 w-full random-color1">
+                        </div>
+
+                        <div>
+                            <label class="block mb-2 font-semibold text-[#514d4d] text-sm random-color2">Confusing Dropdown</label>
+                            <select name="useless3" class="px-4 py-3 border border-gray-300 focus:border-[#E15A37] rounded-xl focus:ring-[#fce77c]/60 focus:ring-4 w-full random-color3">
+                                <option value="">Pick something random</option>
+                                <option value="1">Option A</option>
+                                <option value="2">Option B</option>
+                                <option value="3">Option C</option>
+                            </select>
                         </div>
 
                         <button type="submit"
-                            class="bg-[#E15A37] hover:bg-[#ED865A] py-4 rounded-full w-full font-semibold text-white text-lg">
-                            Save Changes
+                            class="bg-[#E15A37] hover:bg-[#ED865A] py-4 rounded-full w-full font-semibold text-white text-lg random-color4">
+                            Save Changes (No going back!)
                         </button>
                     </form>
                 </div>

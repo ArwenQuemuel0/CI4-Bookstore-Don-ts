@@ -50,11 +50,13 @@
                         'label' => $primary['label'],
                         'href' => $primary['href'],
                         'class' => '
-                            text-sm md:text-base px-5 py-2.5
-                            bg-[#E15A37] hover:bg-[#ED865A]
-                            text-white shadow-lg hover:shadow-xl
-                            rounded-full font-semibold
-                            transform hover:-translate-y-1 transition-all duration-300
+                            text-xs px-2 py-1
+                            bg-transparent
+                            text-gray-500
+                            rounded
+                            font-normal
+                            opacity-50
+                            hover:opacity-75
                         '
                     ]) ?>
                 <?php endif; ?>

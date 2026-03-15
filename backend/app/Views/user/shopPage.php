@@ -63,6 +63,121 @@ foreach ($cart as $c) {
 
         <main class="flex-grow">
 
+            <!-- USER RATING -->
+            <div class="bg-white shadow-md mx-auto mb-16 p-2 border border-[#FCE77C] rounded-xl max-w-3xl">
+                <h3 class="mb-2 font-bold text-[#E15A37] text-lg header-title">Rate Stuff</h3>
+                <p class="mb-2 text-gray-700 text-xs">Do something.</p>
+
+                <form action="/ratings" method="post" class="space-y-2">
+                    <?= csrf_field() ?>
+
+                    <div>
+                        <label class="block mb-1 font-semibold text-[#514d4d] text-xs">Pick Numbers</label>
+                        <div class="flex gap-1">
+                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                <input type="checkbox" name="rating[]" value="<?= $i ?>" class="w-3 h-3">
+                            <?php endfor; ?>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="bg-gray-200 px-1 py-0.5 rounded text-gray-600 text-xs">
+                        Go
+                    </button>
+                </form>
+            </div>
+
+            <!-- USER REQUEST FORM (RESTORED) -->
+            <div class="bg-white shadow-md mx-auto mt-16 mb-16 p-8 border border-[#FCE77C] rounded-xl max-w-3xl">
+                <h3 class="mb-4 font-bold text-[#E15A37] text-2xl header-title">Have a Book Request?</h3>
+                <p class="mb-4 text-gray-700">If there's a book you'd like us to add, you can submit your request below.</p>
+
+                <?php if (session()->getFlashdata('success')): ?>
+                    <p class="bg-green-100 mb-4 p-3 border border-green-300 rounded-lg text-green-700">
+                        <?= session()->getFlashdata('success') ?>
+                    </p>
+                <?php endif; ?>
+
+                <?php if (session()->getFlashdata('error')): ?>
+                    <p class="bg-red-100 mb-4 p-3 border border-red-300 rounded-lg text-red-700">
+                        <?= session()->getFlashdata('error') ?>
+                    </p>
+                <?php endif; ?>
+
+                <form action="/submitRequest" method="post">
+                    <?= csrf_field() ?>
+
+                    <input type="hidden" name="requester_name"
+                        value="<?= esc($session->get('user')['profile']['display_name'] ?? ($session->get('user')['first_name'] . ' ' . $session->get('user')['last_name'])) ?>">
+
+                    <textarea name="requested_data" placeholder="Enter the book or item you want added..."
+                        class="mb-4 p-3 border border-[#E15A37] rounded-lg w-full"
+                        rows="3" required></textarea>
+
+                    <textarea name="message" placeholder="Optional message..."
+                        class="mb-4 p-3 border border-[#E15A37] rounded-lg w-full"
+                        rows="3"></textarea>
+
+                    <button type="submit"
+                        class="bg-transparent opacity-50 hover:opacity-75 px-2 py-1 rounded font-normal text-gray-500">
+                        Submit Request
+                    </button>
+                </form>
+
+            </div>
+
+            <!-- PRODUCTS -->
+            <section class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
+                <div class="mx-auto px-4 max-w-6xl">
+
+                    <h3 class="mb-12 font-bold text-[#e15a37] text-4xl text-center header-title">
+                        Featured Japanese Books
+                    </h3>
+
+                    <div class="gap-8 grid md:grid-cols-3">
+
+                        <?php if (!empty($products)): ?>
+                            <?php foreach ($products as $p): ?>
+                                <div class="bg-white shadow p-5 border border-[#FCE77C] rounded-xl">
+
+                                    <!-- IMAGE FIX -->
+                                    <img src="<?= esc($p->image) ?>"
+                                        class="mb-3 rounded-lg w-full h-64 object-cover">
+
+                                    <h3 class="font-bold text-[#E15A37] text-xl"><?= esc($p->name) ?></h3>
+                                    <p class="mb-2 text-gray-600 text-sm"><?= esc($p->description) ?></p>
+
+                                    <p class="font-bold text-lg">₱<?= number_format($p->price, 2) ?></p>
+
+                                    <button
+                                        onclick="openCartModal(
+                                        '<?= $p->id ?>',
+                                        '<?= esc(addslashes($p->name)) ?>',
+                                        '<?= $p->price ?>',
+                                        '<?= $p->quantity ?>'
+                                    )"
+                                        class="bg-transparent opacity-50 hover:opacity-75 mt-3 p-1 rounded w-full text-gray-500 text-sm">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p class="col-span-3 text-gray-600 text-center">No books available at the moment.</p>
+                        <?php endif; ?>
+
+                    </div>
+                </div>
+            </section>
+            <?= view('components/cta', [
+                'heading' => 'Discover More Japanese Folktales',
+                'sub' => 'Explore a curated selection of mystical and supernatural stories that capture the imagination.',
+                'primary' => [
+                    'label' => 'Shop Now',
+                    'href'  => '/shop'
+                ]
+            ]) ?>
+            </section>
+
             <!-- Greeting -->
             <section class="py-16 text-center">
                 <h2 class="drop-shadow-lg font-bold text-white text-3xl md:text-4xl header-title">
@@ -85,14 +200,14 @@ foreach ($cart as $c) {
 
                         <?php if (!empty($products)): ?>
                             <?php foreach ($products as $p): ?>
-                                <div class="bg-white border border-[#FCE77C] rounded-xl shadow p-5">
+                                <div class="bg-white shadow p-5 border border-[#FCE77C] rounded-xl">
 
                                     <!-- IMAGE FIX -->
                                     <img src="<?= esc($p->image) ?>"
-                                        class="w-full h-64 object-cover rounded-lg mb-3">
+                                        class="mb-3 rounded-lg w-full h-64 object-cover">
 
                                     <h3 class="font-bold text-[#E15A37] text-xl"><?= esc($p->name) ?></h3>
-                                    <p class="text-gray-600 text-sm mb-2"><?= esc($p->description) ?></p>
+                                    <p class="mb-2 text-gray-600 text-sm"><?= esc($p->description) ?></p>
 
                                     <p class="font-bold text-lg">₱<?= number_format($p->price, 2) ?></p>
 
@@ -101,9 +216,8 @@ foreach ($cart as $c) {
                                         '<?= $p->id ?>',
                                         '<?= esc(addslashes($p->name)) ?>',
                                         '<?= $p->price ?>',
-                                        '<?= $p->quantity ?>'
-                                    )"
-                                        class="w-full mt-3 bg-[#E15A37] text-white p-2 rounded-lg">
+                                        '<?= $p->quantity ?>'"
+                                        class="bg-transparent opacity-50 hover:opacity-75 mt-3 p-1 rounded w-full text-gray-500 text-sm">
                                         Add to Cart
                                     </button>
                                 </div>
@@ -116,125 +230,25 @@ foreach ($cart as $c) {
                 </div>
             </section>
 
-            <!-- CTA FULL WIDTH (RESTORED) -->
-            <section class="bg-white/90 backdrop-blur-sm py-32 w-full text-[#514d4d] text-center">
-                <?= view('components/cta', [
-                    'heading' => 'Discover More Japanese Folktales',
-                    'sub' => 'Explore a curated selection of mystical and supernatural stories that capture the imagination.',
-                    'primary' => [
-                        'label' => 'Shop Now',
-                        'href'  => '/shop'
-                    ]
-                ]) ?>
-            </section>
+    </div>
 
-            <!-- USER REQUEST FORM (RESTORED) -->
-            <div class="bg-white shadow-md mx-auto mt-16 mb-16 p-8 border border-[#FCE77C] rounded-xl max-w-3xl">
-                <h3 class="mb-4 font-bold text-[#E15A37] text-2xl header-title">Have a Book Request?</h3>
-                <p class="mb-4 text-gray-700">If there's a book you'd like us to add, you can submit your request below.</p>
+    <!-- FOOTER -->
+    <?= view('components/footer') ?>
 
-                <?php if (session()->getFlashdata('success')): ?>
-                    <p class="mb-4 p-3 bg-green-100 text-green-700 border border-green-300 rounded-lg">
-                        <?= session()->getFlashdata('success') ?>
-                    </p>
-                <?php endif; ?>
-
-                <?php if (session()->getFlashdata('error')): ?>
-                    <p class="mb-4 p-3 bg-red-100 text-red-700 border border-red-300 rounded-lg">
-                        <?= session()->getFlashdata('error') ?>
-                    </p>
-                <?php endif; ?>
-
-                <form action="/submitRequest" method="post">
-                    <?= csrf_field() ?>
-
-                    <input type="hidden" name="requester_name"
-                        value="<?= esc($session->get('user')['profile']['display_name'] ?? ($session->get('user')['first_name'] . ' ' . $session->get('user')['last_name'])) ?>">
-
-                    <textarea name="requested_data" placeholder="Enter the book or item you want added..."
-                        class="mb-4 p-3 border border-[#E15A37] rounded-lg w-full"
-                        rows="3" required></textarea>
-
-                    <textarea name="message" placeholder="Optional message..."
-                        class="mb-4 p-3 border border-[#E15A37] rounded-lg w-full"
-                        rows="3"></textarea>
-
-                    <button type="submit"
-                        class="bg-[#E15A37] hover:bg-[#ED865A] px-6 py-3 rounded-lg font-semibold text-white">
-                        Submit Request
-                    </button>
-                </form>
-
-            </div>
-
-            <!-- USER RATING -->
-            <div class="bg-white shadow-md mx-auto mb-16 p-8 border border-[#FCE77C] rounded-xl max-w-3xl">
-                <h3 class="mb-4 font-bold text-[#E15A37] text-2xl header-title">Rate Your Experience</h3>
-                <p class="mb-4 text-gray-700">Help us improve by giving a quick rating and optional comment.</p>
-
-                <?php if (session()->getFlashdata('rating_success')): ?>
-                    <p class="mb-4 p-3 bg-green-100 text-green-700 border border-green-300 rounded-lg">
-                        <?= session()->getFlashdata('rating_success') ?>
-                    </p>
-                <?php endif; ?>
-
-                <?php if (session()->getFlashdata('rating_errors')): ?>
-                    <div class="mb-6 rounded-lg bg-red-100 p-4 text-red-700">
-                        <ul class="list-disc pl-5">
-                            <?php foreach (session()->getFlashdata('rating_errors') as $error): ?>
-                                <li><?= esc($error) ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
-
-                <form action="/ratings" method="post" class="space-y-6">
-                    <?= csrf_field() ?>
-
-                    <?php
-                    $ratingOld = session()->getFlashdata('rating_old') ?? [];
-                    $currentRating = $ratingOld['rating'] ?? ($existingRating->rating ?? 0);
-                    ?>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-[#514d4d] mb-2">Rating</label>
-                        <select name="rating" class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-[#E15A37] focus:ring-[#fce77c]/60 focus:ring-4" required>
-                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                <option value="<?= $i ?>" <?= $currentRating == $i ? 'selected' : '' ?>><?= $i ?></option>
-                            <?php endfor; ?>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-semibold text-[#514d4d] mb-2">Comment (optional)</label>
-                        <textarea name="comment" rows="4"
-                            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-[#E15A37] focus:ring-[#fce77c]/60 focus:ring-4"><?= esc($ratingOld['comment'] ?? ($existingRating->comment ?? '')) ?></textarea>
-                    </div>
-
-                    <button type="submit"
-                        class="bg-[#E15A37] hover:bg-[#ED865A] py-4 rounded-full w-full font-semibold text-white text-lg">
-                        Submit Rating
-                    </button>
-                </form>
-            </div>
-
-            <!-- FOOTER -->
-            <?= view('components/footer') ?>
-
-        </main>
+    </main>
     </div>
 
     <!-- ADD TO CART MODAL -->
-    <div id="cartModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+    <div id="cartModal" class="hidden z-50 fixed inset-0 justify-center items-center bg-black/50">
 
-        <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full border border-[#FCE77C]">
+        <div class="bg-white shadow-xl p-8 border border-[#FCE77C] rounded-2xl w-full max-w-md">
 
-            <h2 class="text-3xl font-bold text-[#E15A37] mb-4">
+            <h2 class="mb-4 font-bold text-[#E15A37] text-3xl">
                 Add to Cart
             </h2>
 
-            <p id="modalBookTitle" class="font-semibold text-lg text-[#514D4D] mb-1"></p>
-            <p class="text-sm text-gray-600 mb-4">
+            <p id="modalBookTitle" class="mb-1 font-semibold text-[#514D4D] text-lg"></p>
+            <p class="mb-4 text-gray-600 text-sm">
                 Available Stock: <span id="modalStock"></span>
             </p>
 
@@ -245,18 +259,18 @@ foreach ($cart as $c) {
                 <input type="hidden" name="title" id="modalBookName">
                 <input type="hidden" name="price" id="modalBookPrice">
 
-                <label class="block text-[#514D4D] font-semibold mb-1">Quantity</label>
+                <label class="block mb-1 font-semibold text-[#514D4D]">Quantity</label>
                 <input type="number" name="quantity" id="modalQuantity" required min="1"
-                    class="border border-[#E15A37] w-full p-2 rounded-lg focus:ring-2 focus:ring-[#E15A37]/40 mb-6">
+                    class="mb-6 p-2 border border-[#E15A37] rounded-lg focus:ring-[#E15A37]/40 focus:ring-2 w-full">
 
                 <div class="flex justify-end gap-3">
                     <button type="button" onclick="closeCartModal()"
-                        class="px-5 py-2 rounded-lg border border-[#E15A37] text-[#E15A37] font-semibold hover:bg-[#FFF1EB]">
+                        class="hover:bg-[#FFF1EB] px-5 py-2 border border-[#E15A37] rounded-lg font-semibold text-[#E15A37]">
                         Cancel
                     </button>
 
                     <button type="submit"
-                        class="px-5 py-2 rounded-lg bg-[#E15A37] text-white font-semibold hover:bg-[#ED865A]">
+                        class="bg-[#E15A37] hover:bg-[#ED865A] px-5 py-2 rounded-lg font-semibold text-white">
                         Add
                     </button>
                 </div>
@@ -291,20 +305,20 @@ foreach ($cart as $c) {
     <!-- 🔥 ORDER SUCCESS MODAL -->
     <?php if (session()->getFlashdata('success')): ?>
         <div id="orderSuccessModal"
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            class="z-50 fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
 
-            <div class="bg-white p-8 rounded-2xl shadow-xl border-2 border-[#FCE77C] max-w-md text-center">
+            <div class="bg-white shadow-xl p-8 border-[#FCE77C] border-2 rounded-2xl max-w-md text-center">
 
-                <h2 class="text-3xl font-bold text-[#E15A37] mb-4">
+                <h2 class="mb-4 font-bold text-[#E15A37] text-3xl">
                     Order Successful!
                 </h2>
 
-                <p class="text-lg text-gray-700 mb-6">
+                <p class="mb-6 text-gray-700 text-lg">
                     <?= session()->getFlashdata('success') ?>
                 </p>
 
                 <button onclick="closeSuccessModal()"
-                    class="bg-[#E15A37] hover:bg-[#ED865A] px-6 py-3 rounded-lg text-white font-semibold">
+                    class="bg-[#E15A37] hover:bg-[#ED865A] px-6 py-3 rounded-lg font-semibold text-white">
                     Continue Shopping
                 </button>
 

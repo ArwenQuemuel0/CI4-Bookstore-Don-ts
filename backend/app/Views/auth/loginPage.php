@@ -127,41 +127,15 @@
                         <input type="email" name="email" id="email" required
                             value="<?= esc($old['email'] ?? '') ?>"
                             placeholder="Enter your email"
-                            class="w-full px-4 py-3 border-2 rounded-xl focus:outline-none focus-ring text-gray-900 focus:ring-[#fce77c]/60 focus:ring-4 <?= isset($errors['email']) ? 'border-red-500' : 'border-gray-300' ?>">
-                        <?php if (!empty($errors['email'])): ?>
-                            <p class="mt-1 text-red-600 text-sm"><?= esc($errors['email']) ?></p>
-                        <?php endif; ?>
+                            class="px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus-ring focus:ring-[#fce77c]/60 focus:ring-4 w-full text-gray-900">
                     </div>
 
                     <!-- Password -->
-                    <div class="relative">
+                    <div>
                         <label for="password" class="block mb-2 font-semibold text-[#514d4d]">Password</label>
-
-                        <div class="relative">
-                            <input type="password" name="password" id="password" required
-                                placeholder="Enter your password"
-                                class="w-full pr-10 px-4 py-3 border-2 rounded-xl text-gray-900 text-base focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4 <?= isset($errors['password']) ? 'border-red-500' : 'border-gray-300' ?>">
-
-                            <!-- Eye toggle -->
-                            <button type="button" id="togglePasswordBtn"
-                                class="right-3 absolute inset-y-0 flex items-center text-gray-500">
-                                <svg id="icon-eye" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
-                                        d="M2.5 12s4-7 9.5-7 9.5 7 9.5 7-4 7-9.5 7S2.5 12 2.5 12z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                <svg id="icon-eye-off" xmlns="http://www.w3.org/2000/svg" class="hidden w-5 h-5"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"
-                                        d="M3 3l18 18"></path>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <?php if (!empty($errors['password'])): ?>
-                            <p class="mt-1 text-red-600 text-sm"><?= esc($errors['password']) ?></p>
-                        <?php endif; ?>
+                        <input type="password" name="password" id="password" required
+                            placeholder="Enter your password"
+                            class="px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4 w-full text-gray-900 text-base">
                     </div>
 
                     <!-- Submit -->
@@ -177,10 +151,10 @@
                     </p>
 
                     <!-- Back to Home -->
-                    <?= view('components/buttons/back_button', [
-                        'href' => '/',
-                        'label' => 'Back to Home'
-                    ]) ?>
+                    <button type="button" onclick="window.location.href='/'"
+                        class="mt-5 py-3 rounded-full focus:outline-none w-full font-semibold text-lg btn-primary">
+                        Back to Home
+                    </button>
 
                 </form>
 

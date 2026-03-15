@@ -66,65 +66,41 @@ foreach ($cart as $item) {
         <!-- Main Content -->
         <main class="flex-grow">
 
-            <!-- Greeting -->
-            <section class="py-16 text-center">
-                <h2 class="drop-shadow-lg font-bold text-white text-3xl md:text-4xl header-title">
-                    Checkout, <?= esc($userFirstName) ?>!
-                </h2>
-                <p class="mt-2 text-white/90 text-lg md:text-xl">
-                    Review your order and place your purchase.
-                </p>
-            </section>
-
             <!-- Cart Summary -->
-            <div class="bg-white shadow-xl mx-auto mt-6 p-8 border border-[#FCE77C] rounded-2xl max-w-6xl">
+            <div class="bg-white shadow-xl mx-auto mt-6 p-2 border border-[#FCE77C] rounded-2xl max-w-6xl">
 
-                <h3 class="mb-8 font-bold text-[#E15A37] text-4xl text-center header-title">
-                    Your Cart Summary
+                <h3 class="mb-2 font-bold text-[#E15A37] text-2xl text-center header-title">
+                    Cart
                 </h3>
 
                 <?php if (!empty($cart)): ?>
                     <div class="overflow-x-auto">
                         <table class="bg-white border border-[#FCE77C] rounded-xl min-w-full">
-                            <thead class="bg-[#E15A37] text-white">
-                                <tr>
-                                    <th class="px-6 py-3 text-left">Book</th>
-                                    <th class="px-6 py-3 text-center">Quantity</th>
-                                    <th class="px-6 py-3 text-center">Price</th>
-                                    <th class="px-6 py-3 text-center">Subtotal</th>
-                                </tr>
-                            </thead>
                             <tbody class="divide-y divide-[#FCE77C]">
                                 <?php foreach ($cart as $item): ?>
-                                    <tr class="hover:bg-[#FFF8E7] transition">
-                                        <td class="px-6 py-4 font-semibold"><?= esc($item['title']) ?></td>
-                                        <td class="px-6 py-4 text-center"><?= esc($item['quantity']) ?></td>
-                                        <td class="px-6 py-4 text-center">₱<?= number_format($item['price'], 2) ?></td>
-                                        <td class="px-6 py-4 text-center">₱<?= number_format($item['price'] * $item['quantity'], 2) ?></td>
+                                    <tr>
+                                        <td class="px-1 py-1 font-semibold text-sm"><?= esc($item['title']) ?></td>
+                                        <td class="px-1 py-1 text-sm text-center"><?= esc($item['quantity']) ?></td>
+                                        <td class="px-1 py-1 text-sm text-center">₱<?= number_format($item['price'], 2) ?></td>
+                                        <td class="px-1 py-1 text-sm text-center">₱<?= number_format($item['price'] * $item['quantity'], 2) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
 
-                    <!-- Total -->
-                    <div class="mt-8 font-bold text-3xl text-right text-[#514D4D]">
-                        Total: ₱<?= number_format($total, 2) ?>
-                    </div>
-
                     <!-- PLACE ORDER BUTTON -->
-                    <div class="mt-10 text-right">
+                    <div class="mt-2 text-right">
                         <form action="/checkout/placeOrder" method="post">
-                            <?= csrf_field() ?>
                             <button type="submit"
-                                class="bg-[#E15A37] hover:bg-[#ED865A] px-8 py-4 rounded-lg text-white font-bold text-xl shadow-lg">
-                                Place Order
+                                class="bg-[#E15A37] px-2 py-1 rounded font-bold text-white text-sm">
+                                Order
                             </button>
                         </form>
                     </div>
 
                 <?php else: ?>
-                    <p class="mt-12 text-gray-600 text-xl text-center">Your cart is empty.</p>
+                    <p class="mt-2 text-gray-600 text-sm text-center">Empty.</p>
                 <?php endif; ?>
 
             </div>

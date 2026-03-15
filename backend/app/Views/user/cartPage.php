@@ -66,7 +66,7 @@ foreach ($cartItems as $item) {
 </head>
 
 <body class="flex flex-col min-h-screen">
-    <div class="overlay flex flex-col min-h-screen">
+    <div class="flex flex-col min-h-screen overlay">
 
         <!-- HEADER -->
         <?= view('components/header.php') ?>
@@ -83,11 +83,20 @@ foreach ($cartItems as $item) {
                 </p>
             </section>
 
+            <!-- Confusing Process Bar -->
+            <div class="table-card bg-white shadow-xl mx-auto mt-6 p-4 max-w-6xl">
+                <h3 class="font-bold text-lg text-center">Shopping Process</h3>
+                <div class="bg-gray-200 mt-2 rounded-full w-full h-4">
+                    <div class="bg-red-500 rounded-full h-4" style="width: 25%"></div>
+                </div>
+                <p class="mt-1 text-sm text-center">Step 1 of 8: Viewing Cart (but actually you're stuck here)</p>
+            </div>
+
             <!-- CART BOX -->
-            <div class="bg-white shadow-xl mx-auto mt-6 p-8 table-card max-w-6xl">
+            <div class="table-card bg-white shadow-xl mx-auto mt-6 p-8 max-w-6xl">
 
                 <table class="min-w-full">
-                    <thead class="bg-[#E15A37] text-white rounded-lg">
+                    <thead class="bg-[#E15A37] rounded-lg text-white">
                         <tr>
                             <th class="px-4 py-3 text-left">Image</th>
                             <th class="px-4 py-3 text-left">Book</th>
@@ -95,6 +104,7 @@ foreach ($cartItems as $item) {
                             <th class="px-4 py-3 text-left">Quantity</th>
                             <th class="px-4 py-3 text-left">Subtotal</th>
                             <th class="px-4 py-3 text-left">Actions</th>
+                            <th class="px-4 py-3 text-left">More Options</th>
                         </tr>
                     </thead>
 
@@ -104,7 +114,7 @@ foreach ($cartItems as $item) {
                                 <tr class="border-b">
                                     <td class="px-4 py-3">
                                         <img src="<?= esc($item['image']) ?>"
-                                            class="w-20 h-20 object-cover rounded-lg border border-[#FCE77C]">
+                                            class="border border-[#FCE77C] rounded-lg w-20 h-20 object-cover">
                                     </td>
 
                                     <td class="px-4 py-3 font-semibold"><?= esc($item['title']) ?></td>
@@ -113,12 +123,18 @@ foreach ($cartItems as $item) {
 
                                     <td class="px-4 py-3">
                                         <form action="/cart/updateQuantity/<?= $item['id'] ?>" method="post" class="flex gap-2">
-                                            <input type="number" name="quantity" min="1"
+                                            <input type="number" name="quantity" min="1" max="10" step="1"
                                                 value="<?= $item['quantity'] ?>"
-                                                class="border border-[#E15A37] p-1 rounded w-16 text-center">
-
-                                            <button class="btn-primary px-3 rounded">
-                                                Update
+                                                class="p-1 border border-[#E15A37] rounded w-16 text-center" disabled>
+                                            <select name="updateType" class="p-1 border border-[#E15A37] rounded">
+                                                <option value="increment">Increment by 1</option>
+                                                <option value="decrement">Decrement by 1</option>
+                                                <option value="set">Set to specific</option>
+                                                <option value="double">Double quantity</option>
+                                                <option value="half">Half quantity</option>
+                                            </select>
+                                            <button class="px-3 rounded btn-primary" onclick="return confirm('Are you sure you want to update this quantity? This might affect your order.')">
+                                                Confirm Update
                                             </button>
                                         </form>
                                     </td>
@@ -128,40 +144,54 @@ foreach ($cartItems as $item) {
                                     </td>
 
                                     <td class="px-4 py-3">
-                                        <a href="/cart/remove/<?= $item['id'] ?>"
-                                            class="text-red-500 font-bold hover:text-red-700">
-                                            Remove
-                                        </a>
+                                        <form action="/cart/remove/<?= $item['id'] ?>" method="post" onsubmit="return confirm('Are you absolutely sure you want to remove this item? This action cannot be undone and might affect your shopping experience.')">
+                                            <button type="submit" class="bg-gray-200 px-2 py-1 rounded font-bold text-red-500 hover:text-red-700">
+                                                Remove Item
+                                            </button>
+                                        </form>
+                                        <br>
+                                        <a href="#" onclick="alert('Contact support to remove item')" class="text-blue-500 text-sm">Need help removing?</a>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <button onclick="alert('Wishlist added')" class="bg-blue-500 mb-1 px-1 py-1 rounded text-white text-xs">Add to Wishlist</button><br>
+                                        <button onclick="alert('Compared')" class="bg-green-500 mb-1 px-1 py-1 rounded text-white text-xs">Compare</button><br>
+                                        <button onclick="alert('Shared')" class="bg-purple-500 mb-1 px-1 py-1 rounded text-white text-xs">Share</button><br>
+                                        <button onclick="alert('Reviewed')" class="bg-pink-500 px-1 py-1 rounded text-white text-xs">Write Review</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
 
-                            <!-- TOTAL -->
-                            <tr>
-                                <td colspan="4"></td>
+                            <!-- TOTAL (hidden) -->
+                            <tr style="display: none;">
+                                <td colspan="5"></td>
                                 <td class="px-4 py-4 font-bold text-xl">
                                     Total: ₱<?= number_format($totalPrice, 2) ?>
                                 </td>
+                                <td></td>
                                 <td></td>
                             </tr>
 
                         <?php else: ?>
                             <tr>
-                                <td colspan="6" class="px-4 py-6 text-gray-600 text-center">
-                                    Your cart is empty.
+                                <td colspan="7" class="px-4 py-6 text-gray-600 text-center">
+                                    Your cart is empty. But here are some suggestions: <a href="#" class="text-blue-500">Browse Books</a> | <a href="#" class="text-blue-500">View Deals</a> | <a href="#" class="text-blue-500">Contact Support</a>
                                 </td>
                             </tr>
                         <?php endif; ?>
                     </tbody>
                 </table>
 
-                <!-- Checkout Button -->
-                <div class="flex justify-end mt-6">
-                    <a href="/checkout"
-                        class="btn-yellow px-6 py-3 rounded-full font-semibold shadow">
-                        Proceed to Checkout
-                    </a>
+                <!-- Confusing Options -->
+                <div class="flex justify-center gap-4 mt-6">
+                    <button class="px-4 py-2 rounded btn-primary" onclick="alert('Feature not implemented')">Save Cart for Later</button>
+                    <button class="px-4 py-2 rounded btn-yellow" onclick="alert('Feature not implemented')">Share Cart</button>
+                    <button class="bg-green-500 px-4 py-2 rounded text-white" onclick="alert('Feature not implemented')">Duplicate Cart</button>
+                    <button class="bg-purple-500 px-4 py-2 rounded text-white" onclick="alert('Feature not implemented')">Export to CSV</button>
+                    <button class="bg-pink-500 px-4 py-2 rounded text-white" onclick="alert('Feature not implemented')">Import from Wishlist</button>
+                    <a href="/checkout" class="text-gray-500 text-sm underline" style="font-size: 10px;">Continue</a>
                 </div>
+
+                <!-- No Checkout Button - Users must figure it out -->
 
             </div>
         </main>
