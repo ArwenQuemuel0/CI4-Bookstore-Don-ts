@@ -22,17 +22,17 @@
     <!-- Global base typography -->
     <style>
         :root {
-            --sage-dark: #6F8E78;
-            --sage: #8DAA91;
-            --sage-light: #CFE6D7;
+            --sage-dark: #FF0000;
+            --sage: #00FF00;
+            --sage-light: #FFFF00;
 
-            --rose-dark: #A87D79;
-            --rose: #C7A6A0;
-            --rose-light: #EDD9D6;
+            --rose-dark: #FF00FF;
+            --rose: #00FFFF;
+            --rose-light: #800080;
 
-            --stone-dark: #d6d6d6ff;
-            --stone: #aaaaaaff;
-            --stone-light: #c2c2c2ff;
+            --stone-dark: #FFA500;
+            --stone: #A52A2A;
+            --stone-light: #808080;
         }
 
         .swatch {

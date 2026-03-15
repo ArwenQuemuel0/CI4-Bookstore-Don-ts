@@ -4,7 +4,7 @@
 
 <section id="cta-section"
     class="relative bg-cover bg-center py-10 md:py-16 w-full overflow-hidden text-gray-900"
-    style="background-image: linear-gradient(rgba(44,41,41,0.7), rgba(225,90,55,0.45)), url('https://eazzywalls.com/cdn/shop/files/Celestial_Sun_and_Moon_Wallpaper-min_601afc80-8b41-4e9b-923f-bb609e6f26b7.jpg?v=1752081337&width=1500');">
+    style="background-image: linear-gradient(rgba(255,0,0,0.7), rgba(0,255,0,0.45)), url('https://eazzywalls.com/cdn/shop/files/Celestial_Sun_and_Moon_Wallpaper-min_601afc80-8b41-4e9b-923f-bb609e6f26b7.jpg?v=1752081337&width=1500');">
 
     <!-- Animated overlay particles -->
     <div class="absolute inset-0 opacity-25 pointer-events-none">

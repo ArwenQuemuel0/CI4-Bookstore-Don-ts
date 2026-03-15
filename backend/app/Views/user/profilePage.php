@@ -26,7 +26,7 @@ $success = $session->getFlashdata('success') ?? null;
         body {
             background: url('/assets/background.png') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
         }
 
         .overlay {
@@ -34,7 +34,7 @@ $success = $session->getFlashdata('success') ?? null;
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
         }
 
         /* Adding many random colors and font sizes for bad UX */
@@ -97,7 +97,7 @@ $success = $session->getFlashdata('success') ?? null;
 
         <main class="flex-grow px-4 py-16">
             <div class="bg-white/90 shadow-xl backdrop-blur-sm mx-auto p-10 rounded-3xl max-w-3xl">
-                <h1 class="mb-4 font-bold text-[#E15A37] text-3xl header-title random-color1">Your Profile</h1>
+                <h1 class="mb-4 font-bold text-red-500 text-3xl header-title random-color1">Your Profile</h1>
 
                 <?php if (!empty($errors)): ?>
                     <div class="bg-red-100 mb-6 p-4 rounded-lg text-red-700">
@@ -160,7 +160,7 @@ $success = $session->getFlashdata('success') ?? null;
                         </div>
 
                         <button type="submit"
-                            class="bg-[#E15A37] hover:bg-[#ED865A] py-4 rounded-full w-full font-semibold text-white text-lg random-color4">
+                            class="bg-red-500 hover:bg-green-500 py-4 rounded-full w-full font-semibold text-white text-lg random-color4">
                             Save Changes (No going back!)
                         </button>
                     </form>
@@ -173,3 +173,9 @@ $success = $session->getFlashdata('success') ?? null;
 </body>
 
 </html>
+
+
+
+
+
+

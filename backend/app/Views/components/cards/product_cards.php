@@ -7,7 +7,7 @@
 // $image: string|null
 ?>
 
-<div class="bg-white p-2 border">
+<div class="bg-orange-500 p-2 border border-blue-500">
 
     <!-- Image Section -->
     <div class="bg-gray-100 w-full h-32 overflow-hidden">
@@ -23,12 +23,12 @@
     </div>
 
     <!-- Title -->
-    <h4 class="font-bold text-gray-800 text-lg">
+    <h4 class="font-bold text-purple-800 text-lg">
         <?php echo esc($title ?? ''); ?>
     </h4>
 
     <!-- Description -->
-    <p class="text-gray-600 text-sm">
+    <p class="text-green-600 text-sm">
         <?php echo esc($description ?? ''); ?>
     </p>
 

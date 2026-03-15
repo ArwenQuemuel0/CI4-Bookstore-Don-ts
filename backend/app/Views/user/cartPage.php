@@ -26,7 +26,7 @@ foreach ($cartItems as $item) {
 
     <style>
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
             background: url('/assets/background.png') no-repeat center center fixed;
             background-size: cover;
         }
@@ -40,26 +40,26 @@ foreach ($cartItems as $item) {
         }
 
         .table-card {
-            border: 2px solid #FCE77C;
+            border: 2px solid #FF00FF;
             border-radius: 20px;
         }
 
         .btn-primary {
-            background-color: #E15A37;
+            background-color: #00FFFF;
             color: white;
         }
 
         .btn-primary:hover {
-            background-color: #ED865A;
+            background-color: #FFFF00;
         }
 
         .btn-yellow {
-            background-color: #FCE77C;
-            color: #514D4D;
+            background-color: #FFA500;
+            color: #000000;
         }
 
         .btn-yellow:hover {
-            background-color: #ED865A;
+            background-color: #A52A2A;
             color: white;
         }
     </style>
@@ -96,7 +96,7 @@ foreach ($cartItems as $item) {
             <div class="table-card bg-white shadow-xl mx-auto mt-6 p-8 max-w-6xl">
 
                 <table class="min-w-full">
-                    <thead class="bg-[#E15A37] rounded-lg text-white">
+                    <thead class="bg-red-500 rounded-lg text-white">
                         <tr>
                             <th class="px-4 py-3 text-left">Image</th>
                             <th class="px-4 py-3 text-left">Book</th>

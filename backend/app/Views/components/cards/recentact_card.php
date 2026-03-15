@@ -5,19 +5,19 @@
 ?>
 
 <section class="p-8">
-    <h2 class="mb-4 text-[#8B7E74] text-2xl header-title">Recent Activity</h2>
+    <h2 class="mb-4 text-cyan-500 text-2xl header-title">Recent Activity</h2>
 
-    <div class="bg-white shadow-md border border-[#E5E0DC] rounded-xl overflow-hidden">
+    <div class="bg-cyan-500 shadow-md border border-magenta-500 rounded-xl overflow-hidden">
         <table class="w-full text-left border-collapse">
-            <thead class="bg-[#A99D92]/20">
+            <thead class="bg-magenta-500">
                 <tr>
-                    <th class="px-6 py-3">User</th>
-                    <th class="px-6 py-3">Action</th>
-                    <th class="px-6 py-3">Date</th>
+                    <th class="px-6 py-3 text-white">User</th>
+                    <th class="px-6 py-3 text-white">Action</th>
+                    <th class="px-6 py-3 text-white">Date</th>
                 </tr>
             </thead>
 
-            <tbody class="divide-y divide-[#E5E0DC]">
+            <tbody class="divide-y divide-magenta-500">
 
                 <?php if (isset($activities) && !empty($activities) && is_array($activities)): ?>
 

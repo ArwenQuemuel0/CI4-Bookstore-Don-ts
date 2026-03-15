@@ -16,7 +16,7 @@
         rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
         }
 
         .heading {
@@ -25,8 +25,8 @@
     </style>
 </head>
 
-<body class="bg-fixed bg-cover bg-center text-[#3c2f2f] flex flex-col min-h-screen"
-    style="background-image: url('https://cdn.pixabay.com/photo/2017/10/15/08/56/neutral-2852878_1280.jpg');">
+<body class="flex flex-col bg-cover bg-center bg-fixed min-h-screen text-[#3c2f2f]"
+    style="background-image: url('https://cdn.pixabay.com/photo/2017/10/15/08/56/neutral-2852878_1280.jpg'); background-color: rgba(255, 0, 0, 0.5);">
 
     <!-- HEADER -->
     <?= view('components/header.php') ?>
@@ -36,9 +36,9 @@
         <div class="mx-auto max-w-5xl">
 
             <!-- Page Header -->
-            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-10 text-white">
+            <div class="flex sm:flex-row flex-col sm:justify-between sm:items-center mb-10 text-white">
                 <div>
-                    <h1 class="text-4xl tracking-wide heading drop-shadow-sm">Achlys Bookstore Roadmap</h1>
+                    <h1 class="drop-shadow-sm text-4xl tracking-wide heading">Achlys Bookstore Roadmap</h1>
                     <p class="mt-2 text-[#F5F0EC] text-sm">
                         A visual overview of our bookstore’s ongoing and upcoming milestones.
                     </p>

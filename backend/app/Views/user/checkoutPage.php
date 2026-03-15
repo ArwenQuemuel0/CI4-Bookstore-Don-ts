@@ -35,7 +35,7 @@ foreach ($cart as $item) {
         }
 
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
             background: url('/assets/background.png') no-repeat center center fixed;
             background-size: cover;
         }
@@ -45,13 +45,13 @@ foreach ($cart as $item) {
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
         }
 
         button:hover,
         .card-hover:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(225, 90, 55, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -69,7 +69,7 @@ foreach ($cart as $item) {
             <!-- Cart Summary -->
             <div class="bg-white shadow-xl mx-auto mt-6 p-2 border border-[#FCE77C] rounded-2xl max-w-6xl">
 
-                <h3 class="mb-2 font-bold text-[#E15A37] text-2xl text-center header-title">
+                <h3 class="mb-2 font-bold text-red-500 text-2xl text-center header-title">
                     Cart
                 </h3>
 
@@ -93,7 +93,7 @@ foreach ($cart as $item) {
                     <div class="mt-2 text-right">
                         <form action="/checkout/placeOrder" method="post">
                             <button type="submit"
-                                class="bg-[#E15A37] px-2 py-1 rounded font-bold text-white text-sm">
+                                class="bg-red-500 px-2 py-1 rounded font-bold text-white text-sm">
                                 Order
                             </button>
                         </form>

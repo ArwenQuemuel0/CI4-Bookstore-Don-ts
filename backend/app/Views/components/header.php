@@ -11,7 +11,7 @@ $user = $session->get('user') ?? null;
 $homeUrl = $user ? '/shop' : '/';
 ?>
 
-<header class="top-0 z-50 sticky bg-[#e15a37] shadow-lg text-white">
+<header class="top-0 z-50 sticky bg-red-500 shadow-lg text-white">
     <div class="flex justify-between items-center mx-auto px-4 py-6 max-w-7xl">
 
         <!-- Brand -->
@@ -26,7 +26,7 @@ $homeUrl = $user ? '/shop' : '/';
 
         <!-- Desktop Nav + Logout + Cart -->
         <div class="hidden md:flex items-center space-x-4">
-            <a href="<?= esc($homeUrl) ?>" class="bg-[#fce77c] hover:bg-[#ed865a] shadow-lg px-6 py-3 rounded-full text-[#514d4d] btn-main">
+            <a href="<?= esc($homeUrl) ?>" class="bg-[#fce77c] hover:bg-green-500 shadow-lg px-6 py-3 rounded-full text-[#514d4d] btn-main">
                 Home
             </a>
 
@@ -65,7 +65,7 @@ $homeUrl = $user ? '/shop' : '/';
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-[#e15a37]">
+    <div id="mobileMenu" class="hidden md:hidden bg-red-500">
         <a href="<?= esc($homeUrl) ?>" class="block hover:bg-[#fce77c]/20 px-6 py-3 text-white">Home</a>
         <?php if ($user): ?>
             <a href="/profile" class="block hover:bg-[#fce77c]/20 px-6 py-3 text-white">
@@ -90,3 +90,9 @@ $homeUrl = $user ? '/shop' : '/';
         btn.addEventListener('click', () => menu.classList.toggle('hidden'));
     </script>
 </header>
+
+
+
+
+
+

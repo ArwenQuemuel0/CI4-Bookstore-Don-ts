@@ -29,7 +29,7 @@ $existingRating = $old['existing_rating'] ?? null;
         body {
             background: url('/assets/background.png') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
         }
 
         .overlay {
@@ -37,7 +37,7 @@ $existingRating = $old['existing_rating'] ?? null;
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
         }
 
         .star {
@@ -50,11 +50,11 @@ $existingRating = $old['existing_rating'] ?? null;
         }
 
         .star-filled {
-            color: #E15A37;
+            color: #FF00FF;
         }
 
         .star-empty {
-            color: rgba(255, 255, 255, 0.65);
+            color: #00FFFF;
         }
     </style>
 </head>
@@ -65,19 +65,19 @@ $existingRating = $old['existing_rating'] ?? null;
         <?= view('components/header', ['brandTitle' => 'Rate Us']) ?>
 
         <main class="flex-grow px-4 py-16">
-            <div class="mx-auto max-w-3xl bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-xl">
-                <h1 class="text-3xl font-bold text-[#E15A37] header-title mb-4">Rate Your Experience</h1>
+            <div class="bg-white/90 shadow-xl backdrop-blur-sm mx-auto p-10 rounded-3xl max-w-3xl">
+                <h1 class="mb-4 font-bold text-red-500 text-3xl header-title">Rate Your Experience</h1>
                 <p class="mb-8 text-gray-700">Every rating helps us improve. Your feedback is appreciated!</p>
 
                 <?php if ($success): ?>
-                    <div class="mb-6 rounded-lg bg-green-100 p-4 text-green-700">
+                    <div class="bg-green-100 mb-6 p-4 rounded-lg text-green-700">
                         <?= esc($success) ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if (!empty($errors)): ?>
-                    <div class="mb-6 rounded-lg bg-red-100 p-4 text-red-700">
-                        <ul class="list-disc pl-5">
+                    <div class="bg-red-100 mb-6 p-4 rounded-lg text-red-700">
+                        <ul class="pl-5 list-disc">
                             <?php foreach ($errors as $error): ?>
                                 <li><?= esc($error) ?></li>
                             <?php endforeach; ?>
@@ -100,12 +100,12 @@ $existingRating = $old['existing_rating'] ?? null;
                     </div>
 
                     <div>
-                        <label class="block text-sm font-semibold text-[#514d4d] mb-2">Optional comment</label>
+                        <label class="block mb-2 font-semibold text-[#514d4d] text-sm">Optional comment</label>
                         <textarea name="comment" rows="4"
-                            class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-[#E15A37] focus:ring-[#fce77c]/60 focus:ring-4"><?= esc($old['comment'] ?? '') ?></textarea>
+                            class="px-4 py-3 border border-gray-300 focus:border-[#E15A37] rounded-xl focus:ring-[#fce77c]/60 focus:ring-4 w-full"><?= esc($old['comment'] ?? '') ?></textarea>
                     </div>
 
-                    <button type="submit" class="bg-[#E15A37] hover:bg-[#ED865A] py-4 rounded-full w-full font-semibold text-white text-lg">
+                    <button type="submit" class="bg-red-500 hover:bg-green-500 py-4 rounded-full w-full font-semibold text-white text-lg">
                         Submit Rating
                     </button>
                 </form>

@@ -10,13 +10,19 @@
 
 <?php elseif ($dark ?? false) : ?>
     <a href="<?= esc($href ?? '#') ?>"
-        class="inline-block bg-[#fce77c] hover:bg-[#ed865a] px-5 py-2 rounded-md font-semibold text-[#514d4d] text-sm transition-transform duration-200">
+        class="inline-block bg-[#fce77c] hover:bg-green-500 px-5 py-2 rounded-md font-semibold text-[#514d4d] text-sm transition-transform duration-200">
         <?= esc($label ?? 'Primary') ?>
     </a>
 
 <?php else: ?>
     <a href="<?= esc($href ?? '#') ?>"
-        class="inline-block bg-[#e15a37] hover:bg-[#ed865a] px-5 py-2 rounded-md font-semibold text-white text-sm transition-transform duration-200">
+        class="inline-block bg-red-500 hover:bg-green-500 px-5 py-2 rounded-md font-semibold text-white text-sm transition-transform duration-200">
         <?= esc($label ?? 'Primary') ?>
     </a>
 <?php endif; ?>
+
+
+
+
+
+

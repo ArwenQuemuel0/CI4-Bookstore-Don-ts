@@ -26,7 +26,7 @@
         h3,
         h4,
         .heading {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
             font-weight: 400;
             font-style: normal;
         }
@@ -52,7 +52,7 @@
     <!-- Page content container -->
     <div class="flex-grow mx-auto px-4 md:px-20 py-10 w-full max-w-[1400px]">
         <!-- Hero Section -->
-        <section class="relative bg-[#e15a37] mb-16 p-12 md:p-16 rounded-2xl overflow-hidden text-white">
+        <section class="relative bg-red-500 mb-16 p-12 md:p-16 rounded-2xl overflow-hidden text-white">
             <div class="absolute inset-0 bg-gradient-to-r from-[#e15a37]/30 to-[#fce77c]/30"></div>
             <div class="z-10 relative mx-auto max-w-4xl text-center">
                 <h1 class="mb-6 font-['Righteous'] text-4xl md:text-6xl leading-tight">Achlys’ Bookstore Moodboard</h1>
@@ -65,18 +65,18 @@
             <!-- Color System -->
             <section class="order-2 lg:order-1 bg-white/80 shadow-md backdrop-blur-sm p-8 rounded-2xl">
                 <h2 class="mb-6 font-['Righteous'] text-[#514d4d] text-2xl md:text-3xl text-center">Color System</h2>
-                <p class="mb-8 text-[#e15a37] text-lg text-center">Three main color themes with three vibrance levels each.</p>
+                <p class="mb-8 text-red-500 text-lg text-center">Three main color themes with three vibrance levels each.</p>
 
                 <div class="justify-items-center gap-6 grid grid-cols-1 md:grid-cols-3">
 
                     <!-- Neutral Brown → Crimson -->
                     <div class="flex flex-col items-center gap-4 text-center">
                         <div class="flex flex-row flex-wrap justify-center items-center gap-2">
-                            <div class="bg-[#e15a37] shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
-                            <div class="bg-[#e15a37]/80 shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
-                            <div class="bg-[#e15a37]/60 shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
+                            <div class="bg-red-500 shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
+                            <div class="bg-red-500/80 shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
+                            <div class="bg-red-500/60 shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
                         </div>
-                        <p class="mt-2 text-[#e15a37] text-sm md:text-base">#e15a37 — 80% — 60%</p>
+                        <p class="mt-2 text-red-500 text-sm md:text-base">#e15a37 — 80% — 60%</p>
                         <p class="font-semibold text-[#514d4d] text-lg">Crimson Accent</p>
                     </div>
 
@@ -87,7 +87,7 @@
                             <div class="bg-[#fce77c]/80 shadow-md border border-[#fce77c] rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
                             <div class="bg-[#fce77c]/60 shadow-md border border-[#fce77c] rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
                         </div>
-                        <p class="mt-2 text-[#e15a37] text-sm md:text-base">#fce77c — 80% — 60%</p>
+                        <p class="mt-2 text-red-500 text-sm md:text-base">#fce77c — 80% — 60%</p>
                         <p class="font-semibold text-[#514d4d] text-lg">Parchment Light</p>
                     </div>
 
@@ -98,7 +98,7 @@
                             <div class="bg-[#fce77c]/40 shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
                             <div class="bg-[#fce77c]/20 shadow-md rounded-lg w-32 md:w-40 h-12 md:h-16"></div>
                         </div>
-                        <p class="mt-2 text-[#e15a37] text-sm md:text-base">#ffffff — 40% — 20%</p>
+                        <p class="mt-2 text-red-500 text-sm md:text-base">#ffffff — 40% — 20%</p>
                         <p class="font-semibold text-[#514d4d] text-lg">Neutral Whites</p>
                     </div>
                 </div>
@@ -109,12 +109,12 @@
                 <h2 class="mb-6 font-['Righteous'] text-[#514d4d] text-2xl md:text-3xl text-center">Typography</h2>
                 <div class="space-y-8">
                     <div class="bg-gradient-to-br from-white to-[#fce77c]/60 p-6 border border-[#fce77c] rounded-xl text-center">
-                        <h3 class="mb-3 font-['Righteous'] text-[#e15a37] text-2xl md:text-3xl">Heading Font</h3>
+                        <h3 class="mb-3 font-['Righteous'] text-red-500 text-2xl md:text-3xl">Heading Font</h3>
                         <p class="font-['Righteous'] text-[#514d4d] text-lg">Righteous – Bold, evocative, and perfect for titles.</p>
                     </div>
 
                     <div class="bg-gradient-to-br from-white to-[#fce77c]/60 p-6 border border-[#fce77c] rounded-xl">
-                        <h3 class="mb-3 font-['Righteous'] text-[#e15a37] text-xl md:text-2xl">Body Font</h3>
+                        <h3 class="mb-3 font-['Righteous'] text-red-500 text-xl md:text-2xl">Body Font</h3>
                         <p class="text-[#514d4d] text-base leading-relaxed">Roboto Slab – Serif elegance for immersive reading.</p>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                     </div>
                 </div>
 
-                <div class="bg-[#e15a37] p-8 rounded-xl text-center">
+                <div class="bg-red-500 p-8 rounded-xl text-center">
                     <h3 class="mb-6 font-semibold text-white text-lg">Dark Mode</h3>
                     <div class="flex flex-wrap justify-center items-center gap-6">
                         <?= view('components/buttons/primary_button', ['label' => 'Primary', 'href' => '#', 'dark' => true, 'disable' => false]) ?>
@@ -151,15 +151,15 @@
         <!-- Cards -->
         <section class="mb-16">
             <div class="bg-white/80 shadow-md backdrop-blur-sm p-8 md:p-12 rounded-2xl text-center">
-                <h2 class="mb-8 font-['Righteous'] text-[#e15a37] text-3xl md:text-4xl">Card Samples</h2>
-                <p class="mx-auto mb-12 max-w-3xl text-[#e15a37] text-lg">Modular components for showcasing books, stats, and testimonials.</p>
+                <h2 class="mb-8 font-['Righteous'] text-red-500 text-3xl md:text-4xl">Card Samples</h2>
+                <p class="mx-auto mb-12 max-w-3xl text-red-500 text-lg">Modular components for showcasing books, stats, and testimonials.</p>
 
                 <div class="gap-8 md:gap-12 grid grid-cols-1 md:grid-cols-3">
                     <?= view('components/cards/sample_cards', [
                         "content" => '
-                            <h3 class="mb-2 font-bold text-[#e15a37] text-4xl">1,254</h3>
-                            <p class="mb-4 text-[#e15a37]">Books Sold This Month</p>
-                            <p class="text-[#e15a37]/70 text-sm">A milestone in our literary journey.</p>
+                            <h3 class="mb-2 font-bold text-red-500 text-4xl">1,254</h3>
+                            <p class="mb-4 text-red-500">Books Sold This Month</p>
+                            <p class="text-red-500/70 text-sm">A milestone in our literary journey.</p>
                         ',
                         "link" => "#"
                     ]) ?>
@@ -167,17 +167,17 @@
                     <?= view('components/cards/sample_cards', [
                         "content" => '
                             <h3 class="mb-2 font-semibold text-[#514d4d] text-2xl">Premium Collection</h3>
-                            <p class="mb-4 text-[#e15a37]">Limited edition hand-picked books for collectors.</p>
-                            <p class="text-[#e15a37]/70 text-sm">Discover rare gems today.</p>
+                            <p class="mb-4 text-red-500">Limited edition hand-picked books for collectors.</p>
+                            <p class="text-red-500/70 text-sm">Discover rare gems today.</p>
                         ',
                         "link" => "#"
                     ]) ?>
 
                     <?= view('components/cards/sample_cards', [
                         "content" => '
-                            <blockquote class="mb-2 font-medium text-[#e15a37] italic">“A cozy place for every book lover.”</blockquote>
-                            <p class="mb-4 text-[#e15a37]/70">— Loyal Customer</p>
-                            <p class="text-[#e15a37]/60 text-sm">Join our community of readers.</p>
+                            <blockquote class="mb-2 font-medium text-red-500 italic">“A cozy place for every book lover.”</blockquote>
+                            <p class="mb-4 text-red-500/70">— Loyal Customer</p>
+                            <p class="text-red-500/60 text-sm">Join our community of readers.</p>
                         ',
                         "link" => "#"
                     ]) ?>
@@ -188,21 +188,21 @@
         <!-- Logos -->
         <section class="bg-white/80 shadow-md backdrop-blur-sm p-8 md:p-12 rounded-2xl text-center">
             <h2 class="mb-8 font-['Righteous'] text-[#514d4d] text-2xl md:text-3xl">Brand Logos</h2>
-            <p class="mx-auto mb-12 max-w-2xl text-[#e15a37] text-lg">Versatile logo variations for digital and print use.</p>
+            <p class="mx-auto mb-12 max-w-2xl text-red-500 text-lg">Versatile logo variations for digital and print use.</p>
 
             <div class="flex flex-wrap justify-center items-center gap-12">
                 <div class="bg-white shadow-lg p-8 border border-[#fce77c] rounded-2xl w-48 md:w-56 text-center">
                     <img src="/assets/fenecircle_logo.png" alt="Fennekin Circle Logo"
                         class="mx-auto mb-4 w-20 md:w-24 h-20 md:h-24 object-contain">
                     <p class="font-medium text-[#514d4d] text-base">Main — Circle</p>
-                    <p class="text-[#e15a37] text-sm">For favicons and social icons</p>
+                    <p class="text-red-500 text-sm">For favicons and social icons</p>
                 </div>
 
                 <div class="bg-white shadow-lg p-8 border border-[#fce77c] rounded-2xl w-48 md:w-56 text-center">
                     <img src="/assets/fenesquare_logo.png" alt="Fennekin Square Logo"
                         class="mx-auto mb-4 w-20 md:w-24 h-20 md:h-24 object-contain">
                     <p class="font-medium text-[#514d4d] text-base">Main — Square</p>
-                    <p class="text-[#e15a37] text-sm">For headers and print materials</p>
+                    <p class="text-red-500 text-sm">For headers and print materials</p>
                 </div>
             </div>
         </section>
@@ -214,3 +214,9 @@
 </body>
 
 </html>
+
+
+
+
+
+

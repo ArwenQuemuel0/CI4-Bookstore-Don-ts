@@ -16,41 +16,41 @@
 
     <style>
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, sans-serif;
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", serif;
         }
 
         input:focus {
-            transition: all 0.3s ease;
-            transform: scale(1.02);
+            transition: all 0.1s ease;
+            transform: scale(1.05);
         }
 
         button {
-            transition: all 0.3s ease;
+            transition: all 0.1s ease;
         }
 
-        /* ORANGE SHADOW */
+        /* RED SHADOW */
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(225, 90, 55, 0.35);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(255, 0, 0, 0.5);
         }
 
-        /* NEW BACKGROUND IMAGE */
+        /* BAD BACKGROUND IMAGE */
         .bookstore-gradient {
             position: relative;
             background: url('/assets/background.png') no-repeat center center;
             background-size: cover;
         }
 
-        /* ORANGE OVERLAY */
+        /* PINK OVERLAY */
         .bookstore-gradient::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(44, 41, 41, 0.85), rgba(225, 90, 55, 0.55));
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.9), rgba(0, 255, 0, 0.5));
             z-index: 0;
         }
 
@@ -59,10 +59,10 @@
             z-index: 1;
         }
 
-        /* FOCUS RING — CREAM YELLOW */
+        /* FOCUS RING — BLUE */
         .focus-ring:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(252, 231, 124, 0.6);
+            box-shadow: 0 0 0 2px rgba(0, 0, 255, 0.8);
         }
     </style>
 </head>
@@ -108,7 +108,7 @@
                                     <input type="text" name="first_name" required
                                         value="<?= esc($old['first_name'] ?? '') ?>"
                                         placeholder="Enter your first name"
-                                        class="px-4 py-4 border-2 <?= isset($errors['first_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-[#fce77c]/60 focus:ring-4">
+                                        class="px-4 py-4 border-2 <?= isset($errors['first_name']) ? 'border-red-500' : 'border-gray-300' ?> rounded-xl w-full text-gray-900 focus:outline-none focus:ring-red-500 focus:ring-4">
                                     <?php if (!empty($errors['first_name'])): ?>
                                         <p class="mt-2 text-red-600 text-sm"><?= esc($errors['first_name']) ?></p>
                                     <?php endif; ?>
@@ -248,7 +248,7 @@
 
                         <!-- SUBMIT BUTTON -->
                         <button type="submit"
-                            class="bg-[#e15a37] hover:bg-[#ed865a] mt-5 py-4 rounded-full w-full font-semibold text-white text-lg">
+                            class="bg-red-500 hover:bg-green-500 mt-5 py-4 rounded-full w-full font-semibold text-white text-lg">
                             Create Account
                         </button>
                     </form>
@@ -257,7 +257,7 @@
                     <div class="space-y-2 mt-6 text-center">
                         <p class="text-[#514d4d]">
                             Already have an account?
-                            <a href="/loginPage" class="font-semibold text-[#e15a37] hover:text-[#ed865a]">
+                            <a href="/loginPage" class="font-semibold text-red-500 hover:text-green-500">
                                 Log in here
                             </a>
                         </p>

@@ -30,7 +30,7 @@ foreach ($cart as $c) {
         body {
             background: url('/assets/background.png') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
         }
 
         .overlay {
@@ -38,7 +38,7 @@ foreach ($cart as $c) {
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
         }
 
         button:hover,
@@ -65,7 +65,7 @@ foreach ($cart as $c) {
 
             <!-- USER RATING -->
             <div class="bg-white shadow-md mx-auto mb-16 p-2 border border-[#FCE77C] rounded-xl max-w-3xl">
-                <h3 class="mb-2 font-bold text-[#E15A37] text-lg header-title">Rate Stuff</h3>
+                <h3 class="mb-2 font-bold text-red-500 text-lg header-title">Rate Stuff</h3>
                 <p class="mb-2 text-gray-700 text-xs">Do something.</p>
 
                 <form action="/ratings" method="post" class="space-y-2">
@@ -89,7 +89,7 @@ foreach ($cart as $c) {
 
             <!-- USER REQUEST FORM (RESTORED) -->
             <div class="bg-white shadow-md mx-auto mt-16 mb-16 p-8 border border-[#FCE77C] rounded-xl max-w-3xl">
-                <h3 class="mb-4 font-bold text-[#E15A37] text-2xl header-title">Have a Book Request?</h3>
+                <h3 class="mb-4 font-bold text-red-500 text-2xl header-title">Have a Book Request?</h3>
                 <p class="mb-4 text-gray-700">If there's a book you'd like us to add, you can submit your request below.</p>
 
                 <?php if (session()->getFlashdata('success')): ?>
@@ -130,7 +130,7 @@ foreach ($cart as $c) {
             <section class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
                 <div class="mx-auto px-4 max-w-6xl">
 
-                    <h3 class="mb-12 font-bold text-[#e15a37] text-4xl text-center header-title">
+                    <h3 class="mb-12 font-bold text-red-500 text-4xl text-center header-title">
                         Featured Japanese Books
                     </h3>
 
@@ -144,7 +144,7 @@ foreach ($cart as $c) {
                                     <img src="<?= esc($p->image) ?>"
                                         class="mb-3 rounded-lg w-full h-64 object-cover">
 
-                                    <h3 class="font-bold text-[#E15A37] text-xl"><?= esc($p->name) ?></h3>
+                                    <h3 class="font-bold text-red-500 text-xl"><?= esc($p->name) ?></h3>
                                     <p class="mb-2 text-gray-600 text-sm"><?= esc($p->description) ?></p>
 
                                     <p class="font-bold text-lg">₱<?= number_format($p->price, 2) ?></p>
@@ -192,7 +192,7 @@ foreach ($cart as $c) {
             <section class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
                 <div class="mx-auto px-4 max-w-6xl">
 
-                    <h3 class="mb-12 font-bold text-[#e15a37] text-4xl text-center header-title">
+                    <h3 class="mb-12 font-bold text-red-500 text-4xl text-center header-title">
                         Featured Japanese Books
                     </h3>
 
@@ -206,7 +206,7 @@ foreach ($cart as $c) {
                                     <img src="<?= esc($p->image) ?>"
                                         class="mb-3 rounded-lg w-full h-64 object-cover">
 
-                                    <h3 class="font-bold text-[#E15A37] text-xl"><?= esc($p->name) ?></h3>
+                                    <h3 class="font-bold text-red-500 text-xl"><?= esc($p->name) ?></h3>
                                     <p class="mb-2 text-gray-600 text-sm"><?= esc($p->description) ?></p>
 
                                     <p class="font-bold text-lg">₱<?= number_format($p->price, 2) ?></p>
@@ -243,7 +243,7 @@ foreach ($cart as $c) {
 
         <div class="bg-white shadow-xl p-8 border border-[#FCE77C] rounded-2xl w-full max-w-md">
 
-            <h2 class="mb-4 font-bold text-[#E15A37] text-3xl">
+            <h2 class="mb-4 font-bold text-red-500 text-3xl">
                 Add to Cart
             </h2>
 
@@ -265,12 +265,12 @@ foreach ($cart as $c) {
 
                 <div class="flex justify-end gap-3">
                     <button type="button" onclick="closeCartModal()"
-                        class="hover:bg-[#FFF1EB] px-5 py-2 border border-[#E15A37] rounded-lg font-semibold text-[#E15A37]">
+                        class="hover:bg-[#FFF1EB] px-5 py-2 border border-[#E15A37] rounded-lg font-semibold text-red-500">
                         Cancel
                     </button>
 
                     <button type="submit"
-                        class="bg-[#E15A37] hover:bg-[#ED865A] px-5 py-2 rounded-lg font-semibold text-white">
+                        class="bg-red-500 hover:bg-green-500 px-5 py-2 rounded-lg font-semibold text-white">
                         Add
                     </button>
                 </div>
@@ -309,7 +309,7 @@ foreach ($cart as $c) {
 
             <div class="bg-white shadow-xl p-8 border-[#FCE77C] border-2 rounded-2xl max-w-md text-center">
 
-                <h2 class="mb-4 font-bold text-[#E15A37] text-3xl">
+                <h2 class="mb-4 font-bold text-red-500 text-3xl">
                     Order Successful!
                 </h2>
 
@@ -318,7 +318,7 @@ foreach ($cart as $c) {
                 </p>
 
                 <button onclick="closeSuccessModal()"
-                    class="bg-[#E15A37] hover:bg-[#ED865A] px-6 py-3 rounded-lg font-semibold text-white">
+                    class="bg-red-500 hover:bg-green-500 px-6 py-3 rounded-lg font-semibold text-white">
                     Continue Shopping
                 </button>
 
@@ -335,3 +335,9 @@ foreach ($cart as $c) {
 </body>
 
 </html>
+
+
+
+
+
+

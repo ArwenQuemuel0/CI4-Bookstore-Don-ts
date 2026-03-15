@@ -11,12 +11,12 @@
 
     <style>
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
             background-color: #f9f8f6;
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
             font-weight: 400;
         }
 
@@ -65,12 +65,12 @@
         <div class="bg-white shadow-xl mx-auto mt-6 p-8 border border-[#FCE77C] rounded-2xl max-w-7xl card-hover">
 
             <div class="flex justify-between items-center mb-8">
-                <h2 class="font-bold text-[#E15A37] text-4xl header-title">📚 Manage Requests</h2>
+                <h2 class="font-bold text-red-500 text-4xl header-title">📚 Manage Requests</h2>
             </div>
 
             <div class="overflow-x-auto">
                 <table class="bg-white border border-[#FCE77C] rounded-xl min-w-full overflow-hidden">
-                    <thead class="bg-[#E15A37] text-white">
+                    <thead class="bg-red-500 text-white">
                         <tr>
                             <th class="px-6 py-3 font-semibold text-sm text-left uppercase">ID</th>
                             <th class="px-6 py-3 font-semibold text-sm text-left uppercase">Requested Book</th>
@@ -154,16 +154,16 @@
         </div>
 
         <nav class="flex-1 space-y-2 p-4">
-            <a href="/admin/adminDashboard" class="block hover:bg-[#ED865A] px-4 py-3 rounded-lg hover:text-white sidebar-link">📊 Dashboard</a>
-            <a href="/admin/stockPage" class="block hover:bg-[#ED865A] px-4 py-3 rounded-lg hover:text-white sidebar-link">📚 Stocks Page</a>
-            <a href="/admin/accountsPage" class="block hover:bg-[#ED865A] px-4 py-3 rounded-lg hover:text-white sidebar-link">👤 Accounts Page</a>
-            <a href="/admin/requestPage" class="block bg-[#ED865A]/30 hover:bg-[#ED865A] px-4 py-3 rounded-lg hover:text-white sidebar-link">📝 Requests Page</a>
+            <a href="/admin/adminDashboard" class="block hover:bg-green-500 px-4 py-3 rounded-lg hover:text-white sidebar-link">📊 Dashboard</a>
+            <a href="/admin/stockPage" class="block hover:bg-green-500 px-4 py-3 rounded-lg hover:text-white sidebar-link">📚 Stocks Page</a>
+            <a href="/admin/accountsPage" class="block hover:bg-green-500 px-4 py-3 rounded-lg hover:text-white sidebar-link">👤 Accounts Page</a>
+            <a href="/admin/requestPage" class="block bg-[#ED865A]/30 hover:bg-green-500 px-4 py-3 rounded-lg hover:text-white sidebar-link">📝 Requests Page</a>
         </nav>
 
         <div class="p-4 border-[#FCE77C]/30 border-t">
             <form action="/logout" method="post">
                 <?= csrf_field() ?>
-                <button type="submit" class="bg-[#FCE77C] hover:bg-[#ED865A] py-2 rounded-lg w-full font-semibold text-[#514D4D] text-center transition">
+                <button type="submit" class="bg-[#FCE77C] hover:bg-green-500 py-2 rounded-lg w-full font-semibold text-[#514D4D] text-center transition">
                     Logout
                 </button>
             </form>
@@ -171,3 +171,9 @@
     </aside>
 
 </body>
+
+
+
+
+
+

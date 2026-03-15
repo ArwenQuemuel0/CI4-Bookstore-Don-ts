@@ -15,12 +15,12 @@
 
     <style>
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
             background-color: #f9f8f6;
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
             font-weight: 400;
         }
 
@@ -72,10 +72,10 @@
         <div class="bg-white shadow-xl mx-auto mt-6 p-8 border border-[#FCE77C] rounded-2xl max-w-7xl card-hover">
 
             <div class="flex justify-between items-center mb-8">
-                <h2 class="font-bold text-[#E15A37] text-4xl header-title">👥 Accounts</h2>
+                <h2 class="font-bold text-red-500 text-4xl header-title">👥 Accounts</h2>
 
                 <a onclick="openAddModal()"
-                    class="hover:bg-[#ED865A] px-6 py-3 rounded-full font-semibold text-lg transition accent-yellow cursor-pointer">
+                    class="hover:bg-green-500 px-6 py-3 rounded-full font-semibold text-lg transition accent-yellow cursor-pointer">
                     ➕ Add New User
                 </a>
             </div>
@@ -83,7 +83,7 @@
             <!-- ACCOUNTS TABLE -->
             <div class="overflow-x-auto">
                 <table class="bg-white border border-[#FCE77C] rounded-xl min-w-full overflow-hidden">
-                    <thead class="bg-[#E15A37] text-white">
+                    <thead class="bg-red-500 text-white">
                         <tr>
                             <th class="px-6 py-3">User ID</th>
                             <th class="px-6 py-3">Full Name</th>
@@ -109,7 +109,7 @@
                                 <td class="px-6 py-4 text-center">
                                     <span class="px-3 py-1 rounded-full text-sm font-semibold
                                         <?= $user->type === 'admin'
-                                            ? 'bg-[#E15A37] text-white'
+                                            ? 'bg-red-500 text-white'
                                             : 'bg-[#FCE77C] text-gray-800' ?>">
                                         <?= ucfirst($user->type) ?>
                                     </span>
@@ -126,7 +126,7 @@
 
                                 <td class="px-6 py-4 text-center">
                                     <a href="#" onclick='openEditModal(<?= json_encode($user) ?>)'
-                                        class="mx-2 text-[#E15A37]">✏️ Edit</a>
+                                        class="mx-2 text-red-500">✏️ Edit</a>
 
                                     <a href="#" onclick='openDeleteModal(<?= json_encode($user) ?>)'
                                         class="mx-2 font-semibold text-red-500 hover:text-red-600">
@@ -166,7 +166,7 @@
             <form action="/logout" method="post">
                 <?= csrf_field() ?>
                 <button type="submit"
-                    class="bg-[#FCE77C] hover:bg-[#ED865A] py-2 rounded-lg w-full font-semibold text-[#514D4D] text-center transition">
+                    class="bg-[#FCE77C] hover:bg-green-500 py-2 rounded-lg w-full font-semibold text-[#514D4D] text-center transition">
                     Logout
                 </button>
             </form>
@@ -180,7 +180,7 @@
             class="bg-white p-6 rounded-2xl border border-[#FCE77C] shadow-xl space-y-4">
             <?= csrf_field() ?>
 
-            <h3 class="text-3xl font-bold text-[#E15A37] header-title mb-4">Add New Account</h3>
+            <h3 class="text-3xl font-bold text-red-500 header-title mb-4">Add New Account</h3>
 
             <div class="grid grid-cols-1 gap-3">
                 <input type="text" name="first_name" placeholder="First Name" class="border border-[#FCE77C] px-3 py-2 rounded-lg" required>
@@ -202,7 +202,7 @@
                 <button type="button" onclick="closeAddModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400">
                     Cancel
                 </button>
-                <button type="submit" class="px-6 py-2 bg-[#E15A37] text-white rounded-lg hover:bg-[#ED865A]">
+                <button type="submit" class="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-green-500">
                     Create
                 </button>
             </div>
@@ -216,7 +216,7 @@
             class="bg-white p-6 rounded-2xl border border-[#FCE77C] shadow-xl space-y-4">
             <?= csrf_field() ?>
 
-            <h3 class="text-3xl font-bold text-[#E15A37] header-title mb-4">✏️ Edit User</h3>
+            <h3 class="text-3xl font-bold text-red-500 header-title mb-4">✏️ Edit User</h3>
 
             <input type="hidden" name="id" id="edit_id">
 
@@ -232,7 +232,7 @@
                 <button type="button" onclick="closeEditModal()" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400">
                     Cancel
                 </button>
-                <button type="submit" class="px-6 py-2 bg-[#E15A37] text-white rounded-lg hover:bg-[#ED865A]">
+                <button type="submit" class="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-green-500">
                     Save Changes
                 </button>
             </div>
@@ -245,7 +245,7 @@
         <form method="post" id="deleteUserForm" class="bg-white p-6 rounded-2xl border border-[#FCE77C] shadow-xl">
             <?= csrf_field() ?>
 
-            <h3 class="text-2xl font-bold text-[#E15A37] header-title mb-4">⚠️ Delete User</h3>
+            <h3 class="text-2xl font-bold text-red-500 header-title mb-4">⚠️ Delete User</h3>
 
             <p class="text-gray-700 mb-6">
                 Are you sure you want to delete
@@ -313,3 +313,9 @@
 </body>
 
 </html>
+
+
+
+
+
+

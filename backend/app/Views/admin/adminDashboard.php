@@ -11,12 +11,12 @@
 
     <style>
         body {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, serif;
             background-color: #f9f8f6;
         }
 
         .header-title {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", sans-serif;
         }
 
         .dashboard-header {
@@ -77,7 +77,7 @@
             <form action="/logout" method="post">
                 <?= csrf_field() ?>
                 <button type="submit"
-                    class="bg-[#FCE77C] hover:bg-[#ED865A] py-2 rounded-lg w-full font-semibold text-[#514D4D]">
+                    class="bg-[#FCE77C] hover:bg-green-500 py-2 rounded-lg w-full font-semibold text-[#514D4D]">
                     Logout
                 </button>
             </form>
@@ -87,3 +87,9 @@
 </body>
 
 </html>
+
+
+
+
+
+

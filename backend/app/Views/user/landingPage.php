@@ -16,17 +16,17 @@
         body {
             background: url('/assets/background.png') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, sans-serif;
         }
 
-        /* OVERLAY UPDATED TO ORANGE TINT */
+        /* OVERLAY UPDATED TO PINK TINT */
         .overlay {
-            background: linear-gradient(rgba(44, 41, 41, 0.6), rgba(225, 90, 55, 0.4));
+            background: linear-gradient(rgba(255, 192, 203, 0.8), rgba(0, 255, 0, 0.4));
         }
 
-        /* OLD BROWN → PRIMARY ORANGE */
+        /* UGLY RED */
         .custom-neutral {
-            background-color: #e15a37;
+            background-color: #ff0000;
         }
 
         .header-title,
@@ -35,17 +35,17 @@
         h3,
         h4,
         .heading {
-            font-family: "Righteous", sans-serif;
+            font-family: "Times New Roman", serif;
             font-weight: 400;
         }
 
         button,
         a.btn-main,
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.1s ease;
         }
 
-        /* ORANGE SHADOW GLOW */
+        /* RED SHADOW GLOW */
         button:hover,
         a.btn-main:hover,
         .card-hover:hover {
@@ -73,7 +73,7 @@
                 <div class="bottom-0 left-0 absolute bg-white/10 backdrop-blur-sm mx-auto p-8 px-4 rounded-2xl max-w-4xl">
 
                     <!-- ICON CIRCLE -->
-                    <div class="flex justify-center items-center bg-[#e15a37] mx-auto mb-6 rounded-full w-20 h-20 text-white text-3xl">
+                    <div class="flex justify-center items-center bg-red-500 mx-auto mb-6 rounded-full w-20 h-20 text-white text-3xl">
                         📚
                     </div>
 
@@ -96,18 +96,18 @@
             <section id="contact" class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
                 <div class="mx-auto px-4 max-w-4xl text-center">
 
-                    <h3 class="mb-8 font-bold text-[#e15a37] text-4xl header-title">
+                    <h3 class="mb-8 font-bold text-red-500 text-4xl header-title">
                         Contact Us
                     </h3>
 
-                    <div class="flex justify-center items-center bg-[#e15a37] mx-auto mb-6 rounded-full w-16 h-16 text-white text-2xl">
+                    <div class="flex justify-center items-center bg-red-500 mx-auto mb-6 rounded-full w-16 h-16 text-white text-2xl">
                         📧
                     </div>
 
                     <p class="mb-4 text-lg">
                         Email:
                         <a href="mailto:support@fennekinfolios.com"
-                            class="font-semibold text-[#e15a37] hover:text-[#ed865a] underline">
+                            class="font-semibold text-red-500 hover:text-green-500 underline">
                             support@fennekinfolios.com
                         </a>
                     </p>
@@ -123,11 +123,11 @@
             <section id="about" class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
                 <div class="mx-auto px-4 max-w-5xl text-center">
 
-                    <h3 class="mb-8 font-bold text-[#e15a37] text-4xl header-title">
+                    <h3 class="mb-8 font-bold text-red-500 text-4xl header-title">
                         About Fennekin Folios
                     </h3>
 
-                    <div class="flex justify-center items-center bg-[#e15a37] mx-auto mb-6 rounded-full w-16 h-16 text-white text-2xl">
+                    <div class="flex justify-center items-center bg-red-500 mx-auto mb-6 rounded-full w-16 h-16 text-white text-2xl">
                         🏛️
                     </div>
 
@@ -153,7 +153,7 @@
             <section id="howitworks" class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
                 <div class="mx-auto px-4 max-w-6xl">
 
-                    <h3 class="mb-12 font-bold text-[#e15a37] text-4xl text-center header-title">
+                    <h3 class="mb-12 font-bold text-red-500 text-4xl text-center header-title">
                         How It Works
                     </h3>
 
@@ -182,7 +182,7 @@
             <section id="products" class="bg-white/90 backdrop-blur-sm py-20 text-[#514d4d]">
                 <div class="mx-auto px-4 max-w-6xl">
 
-                    <h3 class="mb-12 font-bold text-[#e15a37] text-4xl text-center header-title">
+                    <h3 class="mb-12 font-bold text-red-500 text-4xl text-center header-title">
                         Featured Products
                     </h3>
 
